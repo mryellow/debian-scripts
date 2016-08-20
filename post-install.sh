@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # As root
 # adduser yellow sudo
