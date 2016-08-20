@@ -3,6 +3,7 @@
 # As root
 # adduser yellow sudo
 
+# As user
 sudo apt-get install -y git
 git config --global user.name "Mr-Yellow"
 git config --global user.email "mr-yellow@mr-yellow.com"
@@ -28,4 +29,4 @@ sudo adduser $USER bumblebee
 # Redshift blue-light management
 sudo apt-get install -y redshift-plasmoid
 
-sudo apt-get install -y xclip
+sudo apt-get install -y apg xclip
