@@ -7,6 +7,7 @@
 #sudo apt-get install -y git
 #git config --global user.name "Mr-Yellow"
 #git config --global user.email "mr-yellow@mr-yellow.com"
+#git config --global push.default simple
 #ssh-keygen -t rsa -b 4096 -C "mr-yellow@mr-yellow.com"
 #git clone git@github.com:mryellow/debian-scripts.git ~/scripts
 #./scripts/post-install.sh
