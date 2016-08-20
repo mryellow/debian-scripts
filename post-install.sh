@@ -29,6 +29,10 @@ sudo sed --in-place=.old -e 's/main$/main contrib non-free/g' /etc/apt/sources.l
 sudo apt-get update
 sudo apt-get -y upgrade
 
+echo "Reconfigure fonts."
+sudo dpkg-reconfigure fontconfig-config
+sudo dpkg-reconfigure fontconfig
+
 echo "Installing Bumblebee Hybrid graphics."
 sudo apt-get install -y bumblebee-nvidia primus mesa-utils
 sudo adduser $USER bumblebee
