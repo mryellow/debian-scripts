@@ -3,6 +3,10 @@
 # As root
 # adduser yellow sudo
 
+sudo apt-get install -y git
+git config --global user.name "Mr-Yellow"
+git config --global user.email "mr-yellow@mr-yellow.com"
+
 mkdir -p ~/src/
 wget -O ~/src/atom-amd64.deb https://github.com/atom/atom/releases/download/v1.9.9/atom-amd64.deb
 wget -O ~/src/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -23,3 +27,5 @@ sudo adduser $USER bumblebee
 
 # Redshift blue-light management
 sudo apt-get install -y redshift-plasmoid
+
+sudo apt-get install -y xclip
