@@ -48,6 +48,8 @@ then
   wstool init -j8 src kinetic-desktop-custom.rosinstall
 else
   echo "Updating ROS workspace."
+  # Merge in any updates to original rosinstall.
+  wstool merge -t src kinetic-desktop-custom.rosinstall
   wstool update -j8 -t src
 fi
 
