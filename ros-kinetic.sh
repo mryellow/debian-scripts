@@ -10,7 +10,7 @@ fi
 sudo apt-get update
 
 echo "Installing dependencies."
-sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
+sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential python-catkin-tools
 
 
 if [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ]
