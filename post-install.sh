@@ -38,6 +38,17 @@ sudo apt-get install -y ttf-dejavu ttf-liberation ttf-mscorefonts-installer xfon
 sudo dpkg-reconfigure fontconfig-config
 sudo dpkg-reconfigure fontconfig
 
+if [ ! -d ~/src/infinality ]
+then
+  echo "Install font Infinality."
+  git clone https://github.com/chenxiaolong/Debian-Packages.git ~/src/infinality
+  sudo apt-get install debhelper
+  cd ~/src/infinality/freetype-infinality && build.sh
+  cd ~/src/infinality/fontconfig-infinality && build.sh
+  sudo dpkg -i ~/src/infinality/freetype-infinality/*.deb
+  sudo dpkg -i ~/src/infinality/fontconfig-infinality/*.deb
+fi
+
 echo "Installing Bumblebee Hybrid graphics."
 sudo apt-get install -y bumblebee-nvidia primus mesa-utils
 sudo adduser $USER bumblebee
@@ -71,5 +82,5 @@ then
   echo "" >> ~/.bashrc
   echo "GIT_PROMPT_ONLY_IN_REPO=1" >> ~/.bashrc
   echo "source ~/scripts/git-prompt.sh" >> ~/.bashrc
-  echo "PS1='\[\e]0;\u@\h: \w\a\]\${debian_chroot:+(\$debian_chroot)}\u@\h:\w\$(__git_ps1 \" (%s)\")$'" >> ~/.bashrc
+  echo "PS1='\[\e]0;\u@\h: \w\a\]\${debian_chroot:+(\$debian_chroot)}\u@\h:\w\$(__git_ps1 \" (%s)\")$ '" >> ~/.bashrc
 fi
