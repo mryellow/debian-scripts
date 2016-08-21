@@ -1,0 +1,39 @@
+- git:
+    local-name: kinect
+    uri: git@github.com:SV-ROS/kinect.git
+- git:
+    local-name: kulbu
+    uri: git@github.com:kulbu/kulbu.git
+    version: kinetic-devel
+- git:
+    local-name: kulbu_navigation
+    uri: git@github.com:kulbu/kulbu_navigation.git
+    version: kinetic-devel
+- git:
+    local-name: kulbu_slam
+    uri: git@github.com:kulbu/kulbu_slam.git
+    version: kinetic-devel
+- git:
+    local-name: kulbu_gazebo
+    uri: git@github.com:kulbu/kulbu_gazebo.git
+    version: kinetic-devel
+#- git:
+#    local-name: kulbu_hardware
+#    uri: git@github.com:kulbu/kulbu_hardware.git
+#    version: kinetic-devel
+- git:
+    local-name: hector_gazebo
+    uri: https://github.com/tu-darmstadt-ros-pkg/hector_gazebo.git
+    version: kinetic-devel
+- git:
+    local-name: ratslam_ros
+    uri: git@github.com:mryellow/ratslam.git
+    version: ratslam_ros
+- git:
+    local-name: rtabmap
+    uri: git@github.com:mryellow/rtabmap.git
+    version: kinetic-devel
+- git:
+    local-name: rtabmap_ros
+    uri: git@github.com:mryellow/rtabmap_ros.git
+    version: kinetic-devel
