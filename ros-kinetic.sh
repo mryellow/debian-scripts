@@ -34,7 +34,7 @@ fi
 if [ ! -f /etc/ros/rosdep/local.yaml ];
 then
   echo -e "${YEL}Creating rosdep local.yaml.${NC}"
-  sudo cat >> /etc/ros/rosdep/local.yaml <<EOF
+  sudo tee /etc/ros/rosdep/local.yaml << EOF
 python-pyassimp:
     debian:
       jessie:
