@@ -62,6 +62,9 @@ sudo apt-get install -y redshift-plasmoid
 echo "Installing utils."
 sudo apt-get install -y apg xclip
 
+echo "Installing common software."
+sudo apt-get install -y plasma-widget-ktorrent
+
 if [ ! -f ~/src/installed ]
 then
   echo "Downloading stand-alone packages."

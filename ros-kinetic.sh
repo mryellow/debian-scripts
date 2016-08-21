@@ -2,7 +2,7 @@
 set -e
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-KINETIC_DIR="~/work/ros-kinetic/catkin_ws"
+KINETIC_DIR="/home/yellow/work/ros-kinetic/catkin_ws"
 
 echo "CURRENT_DIR: $CURRENT_DIR"
 echo "KINETIC_DIR: $KINETIC_DIR"
@@ -28,7 +28,7 @@ fi
 echo "Updating rosdep."
 rosdep update
 
-if [ ! -f "$KINETIC_DIR" ];
+if [ ! -d $KINETIC_DIR ];
 then
   echo "Creating Catkin workspace."
   mkdir -p $KINETIC_DIR
@@ -39,7 +39,7 @@ echo "Changing directory to $KINETIC_DIR"
 cd $KINETIC_DIR
 
 #if [ ! -f $KINETIC_DIR/kinetic-desktop-full-wet.rosinstall ];
-if [ ! -f "$KINETIC_DIR/src" ];
+if [ ! -f $KINETIC_DIR/src/.rosinstall ];
 then
   echo "Generating ROS workspace."
   # FIXME: Using own `.rosinstall` file to avoid broken packages. Could merge my changes.
