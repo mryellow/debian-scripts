@@ -44,15 +44,10 @@ function workspace {
     echo -e "${YEL}Creating Catkin workspace.${NC}"
     mkdir -p $DIR
   fi
-  if [ ! -f $DIR/$ROS ];
-  then
-    echo -e "${YEL}Copying $ROS to workspace.${NC}"
-    cp $CURRENT_DIR/$ROS $DIR/$ROS
-  fi
-  #echo -e "${YEL}Changing directory to $DIR${NC}"
-  #cd $DIR
 
-  #if [ ! -f $KINETIC_DIR/kinetic-desktop-full-wet.rosinstall ];
+  echo -e "${YEL}Copying $ROS to workspace.${NC}"
+  cp -u $CURRENT_DIR/$ROS $DIR/$ROS
+
   if [ ! -f $DIR/src/.rosinstall ];
   then
     echo -e "${YEL}Generating ROS workspace.${NC}"
