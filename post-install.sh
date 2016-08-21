@@ -33,21 +33,23 @@ fi
 sudo apt-get update
 sudo apt-get upgrade -y
 
-if [ ! -d ~/src/infinality ]
-then
-  echo "Reconfigure fonts."
-  sudo apt-get install -y ttf-dejavu ttf-liberation ttf-mscorefonts-installer xfonts-terminus
-  sudo dpkg-reconfigure fontconfig-config
-  sudo dpkg-reconfigure fontconfig
+echo "Reconfigure fonts."
+sudo apt-get install -y ttf-dejavu ttf-liberation ttf-mscorefonts-installer xfonts-terminus
+sudo dpkg-reconfigure fontconfig-config
+sudo dpkg-reconfigure fontconfig
 
-  echo "Install font Infinality."
-  git clone https://github.com/chenxiaolong/Debian-Packages.git ~/src/infinality
-  sudo apt-get install -y debhelper
-  cd ~/src/infinality/freetype-infinality && build.sh
-  cd ~/src/infinality/fontconfig-infinality && build.sh
-  sudo dpkg -i ~/src/infinality/freetype-infinality/*.deb
-  sudo dpkg -i ~/src/infinality/fontconfig-infinality/*.deb
-fi
+# FIXME: Host invalid.
+#if [ ! -d ~/src/infinality/installed ]
+#then
+  #echo "Install font Infinality."
+  #git clone https://github.com/chenxiaolong/Debian-Packages.git ~/src/infinality
+  #sudo apt-get install -y debhelper devscripts docbook-to-man quilt
+  #cd ~/src/infinality/freetype-infinality && ./build.sh
+  #cd ~/src/infinality/fontconfig-infinality && ./build.sh
+  #sudo dpkg -i ~/src/infinality/freetype-infinality/*.deb
+  #sudo dpkg -i ~/src/infinality/fontconfig-infinality/*.deb
+  #touch ~/src/infinality/installed
+#fi
 
 echo "Installing Bumblebee Hybrid graphics."
 sudo apt-get install -y bumblebee-nvidia primus mesa-utils
