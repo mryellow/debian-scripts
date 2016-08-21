@@ -10,8 +10,9 @@ fi
 sudo apt-get update
 
 echo "Installing dependencies."
-sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential python-catkin-tools
-
+sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
+# FIXME: `python-numpy` not included in OpenCV3 dependencies.
+sudo apt-get install -y python-catkin-tools python-numpy
 
 if [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ]
 then
@@ -43,6 +44,7 @@ rosdep install --from-paths src --ignore-src --rosdistro kinetic -y --os $(lsb_r
 
 echo "Disabling CUDA support."
 catkin config --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF
+
 echo "Build workspace? [Y/n]"
 read input_variable
 if echo "$input_variable" | grep -iq "^n" ;
