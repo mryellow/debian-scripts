@@ -885,5 +885,9 @@
     version: release/kinetic/xacro/1.11.1-0
 - git:
     local-name: image_pipeline
-    uri: https://github.com/mryellow/image_pipeline.git
+    uri: git@github.com:mryellow/image_pipeline.git
     version: kinetic-devel
+#- git:
+#    local-name: navigation
+#    uri: git@github.com:mryellow/navigation.git
+#    version: kinetic-devel
