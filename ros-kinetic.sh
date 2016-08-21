@@ -2,7 +2,7 @@
 set -e
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-KINETIC_DIR="/home/yellow/work/ros-kinetic"
+KINETIC_DIR="/home/$USER/work/ros-kinetic"
 
 RED='\033[0;31m'
 YEL='\033[1;33m'
