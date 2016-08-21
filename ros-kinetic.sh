@@ -43,11 +43,14 @@ function workspace {
   then
     echo -e "${YEL}Creating Catkin workspace.${NC}"
     mkdir -p $DIR
-    echo -e "${YEL}$CURRENT_DIR/$ROS $DIR/$ROS${NC}"
+  fi
+  if [ ! -f $DIR/$ROS ];
+  then
+    echo -e "${YEL}Copying $ROS to workspace.${NC}"
     cp $CURRENT_DIR/$ROS $DIR/$ROS
   fi
-  echo -e "${YEL}Changing directory to $DIR${NC}"
-  cd $DIR
+  #echo -e "${YEL}Changing directory to $DIR${NC}"
+  #cd $DIR
 
   #if [ ! -f $KINETIC_DIR/kinetic-desktop-full-wet.rosinstall ];
   if [ ! -f $DIR/src/.rosinstall ];
@@ -56,16 +59,16 @@ function workspace {
     # FIXME: Using own `.rosinstall` file to avoid broken packages. Could merge my changes.
     #rosinstall_generator desktop_full --rosdistro kinetic --deps --wet-only > kinetic-desktop-full-wet.rosinstall
     #wstool init -j8 src kinetic-desktop-full-wet.rosinstall
-    wstool init -j8 src ~/scripts/$ROS
+    wstool init -j8 $DIR/src $DIR/$ROS
   else
     echo -e "${YEL}Updating ROS workspace.${NC}"
     # Merge in any updates to original rosinstall.
-    wstool merge -ky -t src ~/scripts/$ROS
-    wstool update -j 8 -t src
+    wstool merge -ky -t $DIR/src $DIR/$ROS
+    wstool update -j 8 -t $DIR/src
   fi
 
   echo -e "${YEL}Installing dependency packages.${NC}"
-  rosdep install --from-paths src --ignore-src --rosdistro kinetic -y --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc)
+  rosdep install --from-paths $DIR/src --ignore-src --rosdistro kinetic -y --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc)
 
   echo -e "${YEL}Disabling CUDA support.${NC}"
   catkin config --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF
