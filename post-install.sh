@@ -33,13 +33,13 @@ fi
 sudo apt-get update
 sudo apt-get -y upgrade
 
-echo "Reconfigure fonts."
-sudo apt-get install -y ttf-dejavu ttf-liberation ttf-mscorefonts-installer xfonts-terminus
-sudo dpkg-reconfigure fontconfig-config
-sudo dpkg-reconfigure fontconfig
-
 if [ ! -d ~/src/infinality ]
 then
+  echo "Reconfigure fonts."
+  sudo apt-get install -y ttf-dejavu ttf-liberation ttf-mscorefonts-installer xfonts-terminus
+  sudo dpkg-reconfigure fontconfig-config
+  sudo dpkg-reconfigure fontconfig
+
   echo "Install font Infinality."
   git clone https://github.com/chenxiaolong/Debian-Packages.git ~/src/infinality
   sudo apt-get install debhelper
