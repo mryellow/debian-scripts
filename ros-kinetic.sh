@@ -68,15 +68,15 @@ function workspace {
   echo -e "${YEL}Disabling CUDA support.${NC}"
   catkin config --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF
 
-  echo -e "${YEL}Build workspace $DIR? [Y/n]${NC}"
-  read input_variable
-  if echo "$input_variable" | grep -iq "^n";
-  then
-    echo -e "${YEL}Skipping workspace build.${NC}"
-  else
+  #echo -e "${YEL}Build workspace $DIR? [Y/n]${NC}"
+  #read input_variable
+  #if echo "$input_variable" | grep -iq "^n";
+  #then
+  #  echo -e "${YEL}Skipping workspace build.${NC}"
+  #else
     echo -e "${YEL}Building workspace with Catkin.${NC}"
     catkin build -w $DIR
-  fi
+  #fi
 }
 
 workspace catkin_ws kinetic-desktop-custom.rosinstall
