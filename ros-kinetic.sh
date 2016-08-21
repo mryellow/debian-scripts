@@ -11,6 +11,9 @@ NC='\033[0m' # No Color
 echo -e "${YEL}CURRENT_DIR: $CURRENT_DIR${NC}"
 echo -e "${YEL}KINETIC_DIR: $KINETIC_DIR${NC}"
 
+# Ask for SSH passphrase
+ssh-add
+
 if [ ! -f /etc/apt/sources.list.d/ros-latest.list ];
 then
   echo -e "${YEL}Configure apt sources.${NC}"
