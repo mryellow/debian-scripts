@@ -56,11 +56,11 @@ function workspace {
     # FIXME: Using own `.rosinstall` file to avoid broken packages. Could merge my changes.
     #rosinstall_generator desktop_full --rosdistro kinetic --deps --wet-only > kinetic-desktop-full-wet.rosinstall
     #wstool init -j8 src kinetic-desktop-full-wet.rosinstall
-    wstool init -j8 src $ROS
+    wstool init -j8 src ~/scripts/$ROS
   else
     echo -e "${YEL}Updating ROS workspace.${NC}"
     # Merge in any updates to original rosinstall.
-    wstool merge -t src $ROS
+    wstool merge -ky -t src ~/scripts/$ROS
     wstool update -j 8 -t src
   fi
 
