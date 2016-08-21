@@ -25,8 +25,11 @@ EOF
   gpg --gen-key
 fi
 
-echo "Adding contrib and non-free sources for nvidia drivers."
-sudo sed --in-place=.old -e 's/main$/main contrib non-free/g' /etc/apt/sources.list
+if ! grep "contrib non-free" /etc/apt/sources.list;
+then
+  echo "Adding contrib and non-free sources for nvidia drivers."
+  sudo sed --in-place=.old -e 's/main$/main contrib non-free/g' /etc/apt/sources.list
+fi
 sudo apt-get update
 sudo apt-get -y upgrade
 
@@ -60,4 +63,13 @@ then
   dpkg -i ~/src/steam_latest.deb
   sudo apt-get -fy install
   touch ~/src/installed
+fi
+
+if ! grep "GIT_PROMPT_ONLY_IN_REPO" ~/.bashrc;
+then
+  echo "Install GIT prompt."
+  echo "" >> ~/.bashrc
+  echo "GIT_PROMPT_ONLY_IN_REPO=1" >> ~/.bashrc
+  echo "source ~/scripts/git-prompt.sh" >> ~/.bashrc
+  echo "PS1='\[\e]0;\u@\h: \w\a\]\${debian_chroot:+(\$debian_chroot)}\u@\h:\w\$(__git_ps1 \" (%s)\")$'" >> ~/.bashrc
 fi
