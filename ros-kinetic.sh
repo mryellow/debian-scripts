@@ -57,6 +57,13 @@ function workspace {
   DIR="$KINETIC_DIR/$1" # Workspace path
   ROS=$2 # rosinstall file
 
+  if [ -z "$3" ];
+  then
+    EXT=""
+  else
+    EXT="$KINETIC_DIR/$3" # Extend workspace
+  fi
+
   echo -e "${YEL}Workspace: $DIR - $ROS${NC}"
 
   if [ ! -d $DIR ];
@@ -88,6 +95,12 @@ function workspace {
   echo -e "${YEL}Disabling CUDA support.${NC}"
   catkin config --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF
 
+  if [ ! -z $EXT ];
+  then
+    echo -e "${YEL}Extending workspace $EXT.${NC}"
+    catkin config --extend $EXT
+  fi
+
   #echo -e "${YEL}Build workspace $DIR? [Y/n]${NC}"
   #read input_variable
   #if echo "$input_variable" | grep -iq "^n";
@@ -95,12 +108,12 @@ function workspace {
   #  echo -e "${YEL}Skipping workspace build.${NC}"
   #else
     echo -e "${YEL}Building workspace with Catkin.${NC}"
-    catkin build -w $DIR
+    catkin build -w $DIR -s $DIR/src -l $DIR/log -b $DIR/build -d $DIR/devel
   #fi
 }
 
 workspace catkin_ws kinetic-desktop-custom.rosinstall
-source $KINETIC_DIR/catkin_ws/devel/setup.bash
-workspace ws kinetic-kulbu.rosinstall
+#source $KINETIC_DIR/catkin_ws/devel/setup.bash
+workspace ws kinetic-kulbu.rosinstall catkin_ws
 #cd $KINETIC_DIR/ws
 #source $KINETIC_DIR/ws/devel/setup.bash

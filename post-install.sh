@@ -41,6 +41,7 @@ echo -e "${YEL}Reconfigure fonts.${NC}"
 sudo apt-get install -y ttf-dejavu ttf-liberation ttf-mscorefonts-installer xfonts-terminus
 sudo dpkg-reconfigure fontconfig-config
 sudo dpkg-reconfigure fontconfig
+cp -u fonts.conf ~/.fonts.conf
 
 # FIXME: Host invalid.
 #if [ ! -d ~/src/infinality/installed ]

@@ -41,3 +41,13 @@
     local-name: moveit
     uri: https://github.com/ros-planning/moveit.git
     version: kinetic-devel
+- git:
+    local-name: moveit_resources
+    uri: https://github.com/ros-planning/moveit_resources.git
+- git:
+    local-name: moveit_msgs
+    uri: https://github.com/ros-planning/moveit_msgs.git
+#- git:
+#    local-name: ros_control
+#    uri: https://github.com/ros-controls/ros_control.git
+#    version: kinetic-devel
