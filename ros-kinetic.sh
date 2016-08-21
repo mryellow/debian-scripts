@@ -12,8 +12,10 @@ echo -e "${YEL}CURRENT_DIR: $CURRENT_DIR${NC}"
 echo -e "${YEL}KINETIC_DIR: $KINETIC_DIR${NC}"
 
 # Ask for SSH passphrase
-# FIXME: Check need for auth before prompting.
-ssh-add
+if [ -z "$SSH_AUTH_SOCK" ];
+then
+  ssh-add
+fi
 
 if [ ! -f /etc/apt/sources.list.d/ros-latest.list ];
 then
