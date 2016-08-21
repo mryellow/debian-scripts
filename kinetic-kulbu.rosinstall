@@ -37,3 +37,7 @@
     local-name: rtabmap_ros
     uri: git@github.com:mryellow/rtabmap_ros.git
     version: kinetic-devel
+- git:
+    local-name: moveit_ros
+    uri: https://github.com/ros-planning/moveit_ros.git
+    version: kinetic-devel
