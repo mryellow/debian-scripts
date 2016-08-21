@@ -891,3 +891,8 @@
 #    local-name: navigation
 #    uri: git@github.com:mryellow/navigation.git
 #    version: kinetic-devel
+- git:
+    local-name: ros_control
+    uri: https://github.com/ros-controls/ros_control.git
+    version: kinetic-devel
+  
