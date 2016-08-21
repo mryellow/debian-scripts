@@ -54,7 +54,7 @@ else
   echo -e "${YEL}Updating ROS workspace.${NC}"
   # Merge in any updates to original rosinstall.
   wstool merge -t src kinetic-desktop-custom.rosinstall
-  wstool update -j8 -t src
+  wstool update -j 8 -t src
 fi
 
 echo -e "${YEL}Installing dependency packages.${NC}"
