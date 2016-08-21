@@ -12,6 +12,7 @@ echo -e "${YEL}CURRENT_DIR: $CURRENT_DIR${NC}"
 echo -e "${YEL}KINETIC_DIR: $KINETIC_DIR${NC}"
 
 # Ask for SSH passphrase
+# FIXME: Check need for auth before prompting.
 ssh-add
 
 if [ ! -f /etc/apt/sources.list.d/ros-latest.list ];
@@ -95,6 +96,9 @@ function workspace {
   echo -e "${YEL}Installing dependency packages.${NC}"
   rosdep install --from-paths $DIR/src --ignore-src --rosdistro kinetic -y --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc)
 
+  echo -e "${YEL}Configuring workspace location.${NC}"
+  catkin config --init -w$DIR -s$DIR/src -l$DIR/log -b$DIR/build -d$DIR/devel -i$DIR/install
+
   echo -e "${YEL}Disabling CUDA support.${NC}"
   catkin config --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF
 
@@ -111,7 +115,7 @@ function workspace {
   #  echo -e "${YEL}Skipping workspace build.${NC}"
   #else
     echo -e "${YEL}Building workspace with Catkin.${NC}"
-    catkin build -w $DIR -s $DIR/src -l $DIR/log -b $DIR/build -d $DIR/devel
+    catkin build -w $DIR
   #fi
 }
 
