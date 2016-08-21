@@ -29,6 +29,19 @@ then
   echo -e "${YEL}Initialising rosdep.${NC}"
   sudo rosdep init
 fi
+
+# TODO: Add `/etc/ros/rosdep/local.yaml` with `python-pyassimp`
+if [ ! -f /etc/ros/rosdep/local.yaml ];
+then
+  echo -e "${YEL}Creating rosdep local.yaml.${NC}"
+  sudo cat >> /etc/ros/rosdep/local.yaml <<EOF
+python-pyassimp:
+    debian:
+      jessie:
+        apt: [python-pyassimp]
+EOF
+fi
+
 echo -e "${YEL}Updating rosdep.${NC}"
 rosdep update
 
