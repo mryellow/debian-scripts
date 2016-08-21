@@ -41,6 +41,13 @@ python-pyassimp:
         apt: [python-pyassimp]
 EOF
 fi
+if [ ! -f /etc/ros/rosdep/sources.list.d/10-local.list ];
+then
+  echo -e "${YEL}Adding rosdep local.yaml.${NC}"
+  sudo tee /etc/ros/rosdep/sources.list.d/10-local.list << EOF
+yaml file:///etc/ros/rosdep/local.yaml
+EOF
+fi
 
 echo -e "${YEL}Updating rosdep.${NC}"
 rosdep update
