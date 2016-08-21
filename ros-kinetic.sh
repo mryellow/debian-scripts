@@ -43,5 +43,12 @@ rosdep install --from-paths src --ignore-src --rosdistro kinetic -y --os $(lsb_r
 
 echo "Disabling CUDA support."
 catkin config --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF
-echo "Building ROS workspace."
-catkin build
+echo "Build workspace? [Y/n]"
+read input_variable
+if echo "$input_variable" | grep -iq "^n" ;
+then
+  echo "Skipping workspace build."
+else
+  echo "Building workspace with Catkin."
+  catkin build
+fi
