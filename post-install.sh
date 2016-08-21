@@ -31,7 +31,7 @@ then
   sudo sed --in-place=.old -e 's/main$/main contrib non-free/g' /etc/apt/sources.list
 fi
 sudo apt-get update
-sudo apt-get -y upgrade
+sudo apt-get upgrade -y
 
 if [ ! -d ~/src/infinality ]
 then
@@ -42,7 +42,7 @@ then
 
   echo "Install font Infinality."
   git clone https://github.com/chenxiaolong/Debian-Packages.git ~/src/infinality
-  sudo apt-get install debhelper
+  sudo apt-get install -y debhelper
   cd ~/src/infinality/freetype-infinality && build.sh
   cd ~/src/infinality/fontconfig-infinality && build.sh
   sudo dpkg -i ~/src/infinality/freetype-infinality/*.deb
