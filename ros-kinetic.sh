@@ -75,7 +75,7 @@ function workspace {
     echo -e "${YEL}Skipping workspace build.${NC}"
   else
     echo -e "${YEL}Building workspace with Catkin.${NC}"
-    catkin build
+    catkin build -w $DIR
   fi
 }
 
