@@ -1008,9 +1008,6 @@
     local-name: turtlebot_msgs
     uri: https://github.com/turtlebot/turtlebot_msgs.git
 - git:
-    local-name: stdr_simulator
-    uri: https://github.com/stdr-simulator-ros-pkg/stdr_simulator.git
-- git:
     local-name: kobuki
     uri: https://github.com/yujinrobot/kobuki.git
     version: kinetic
@@ -1026,9 +1023,6 @@
     local-name: kobuki_msgs
     uri: https://github.com/yujinrobot/kobuki_msgs.git
     version: kinetic
-- git:
-    local-name: freenect_stack
-    uri: https://github.com/ros-drivers/freenect_stack.git
 - git:
     local-name: ecl_core
     uri: https://github.com/stonier/ecl_core.git
@@ -1102,9 +1096,6 @@
     local-name: astra_camera
     uri: https://github.com/tfoote/ros_astra_camera.git
 - git:
-    local-name: realsense_camera
-    uri: https://github.com/BlazingForests/realsense_camera.git
-- git:
     local-name: zeroconf_avahi_suite
     uri: https://github.com/stonier/zeroconf_avahi_suite.git
 - git:
@@ -1117,7 +1108,6 @@
     local-name: libfreenect
     uri: https://github.com/ros-drivers/libfreenect.git
     version: ros-devel
-
 # Modified/Patched packages
 - git:
     local-name: image_pipeline
@@ -1126,4 +1116,15 @@
 - git:
     local-name: navigation
     uri: git@github.com:mryellow/navigation.git
+    version: kinetic-devel
+- git:
+    local-name: freenect_stack
+    uri: git@github.com:mryellow/freenect_stack.git
+- git:
+    local-name: stdr_simulator
+    uri: git@github.com:mryellow/stdr_simulator.git
+    version: kinetic-devel
+- git:
+    local-name: realsense_camera
+    uri: git@github.com:mryellow/realsense_camera.git
     version: kinetic-devel
