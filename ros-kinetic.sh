@@ -148,7 +148,4 @@ function workspace {
 }
 
 workspace root_ws kinetic-desktop-custom.rosinstall
-#source $KINETIC_DIR/catkin_ws/devel/setup.bash
 workspace kulbu_ws kinetic-kulbu.rosinstall root_ws
-#cd $KINETIC_DIR/ws
-#source $KINETIC_DIR/ws/devel/setup.bash
