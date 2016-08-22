@@ -8,6 +8,8 @@ RED='\033[0;31m'
 YEL='\033[1;33m'
 NC='\033[0m' # No Color
 
+SKIP_UPDATES=1
+
 echo -e "${YEL}CURRENT_DIR: $CURRENT_DIR${NC}"
 echo -e "${YEL}KINETIC_DIR: $KINETIC_DIR${NC}"
 
@@ -23,7 +25,10 @@ then
   sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
   sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 0xB01FA116
 fi
-sudo apt-get update
+if [ ! $SKIP_UPDATES -eq 1 ];
+then
+  sudo apt-get update
+fi
 
 echo -e "${YEL}Installing dependencies.${NC}"
 sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
@@ -55,8 +60,11 @@ yaml file:///etc/ros/rosdep/local.yaml
 EOF
 fi
 
-echo -e "${YEL}Updating rosdep.${NC}"
-rosdep update
+if [ ! $SKIP_UPDATES -eq 1 ];
+then
+  echo -e "${YEL}Updating rosdep.${NC}"
+  rosdep update
+fi
 
 # Create workspaces given path and rosinstall file.
 function workspace {
@@ -92,11 +100,11 @@ function workspace {
     echo -e "${YEL}Updating ROS workspace.${NC}"
     # Merge in any updates to original rosinstall.
     wstool merge -ky -t $DIR/src $DIR/$ROS
-    wstool update -j 8 -t $DIR/src
+    if [ ! $SKIP_UPDATES -eq 1 ];
+    then
+      wstool update -j8 -t $DIR/src
+    fi
   fi
-
-  echo -e "${YEL}Installing dependency packages.${NC}"
-  rosdep install --from-paths $DIR/src --ignore-src --rosdistro kinetic -y --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc)
 
   echo -e "${YEL}Configuring workspace location.${NC}"
   catkin config --init -w$DIR -s$DIR/src -l$DIR/log -b$DIR/build -d$DIR/devel -i$DIR/install
@@ -109,6 +117,11 @@ function workspace {
     echo -e "${YEL}Extending workspace $EXT.${NC}"
     catkin config --extend $EXT
   fi
+
+  echo -e "${YEL}Installing dependency packages.${NC}"
+  source $DIR/devel/setup.bash
+  echo -e "${YEL}ROS_PACKAGE_PATH: $ROS_PACKAGE_PATH${NC}"
+  rosdep install --from-paths $DIR/src --ignore-src --rosdistro kinetic -y --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc)
 
   #echo -e "${YEL}Build workspace $DIR? [Y/n]${NC}"
   #read input_variable
