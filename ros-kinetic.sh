@@ -120,16 +120,16 @@ function workspace {
   if [ $NO_GPU -eq 1 ];
   then
     echo -e "${YEL}Disabling CUDA support.${NC}"
-    catkin config --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF
+    catkin config -w$DIR --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF
   fi
 
   if [ ! -z $EXT ];
   then
     echo -e "${YEL}Extending workspace $EXT.${NC}"
-    catkin config --extend $EXT
+    catkin config -w$DIR --extend $EXT
   #else
   #  echo -e "${YEL}Root workspace.${NC}"
-  #  catkin config --no-extend
+  #  catkin config -w$DIR --no-extend
   fi
 
   echo -e "${YEL}Installing dependency packages.${NC}"
