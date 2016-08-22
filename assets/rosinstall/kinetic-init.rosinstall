@@ -1,0 +1,4 @@
+- git:
+    local-name: catkin
+    uri: https://github.com/ros-gbp/catkin-release.git
+    version: release/kinetic/catkin/0.7.1-0

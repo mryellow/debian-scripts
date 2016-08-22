@@ -9,7 +9,7 @@ RED='\033[0;31m'
 YEL='\033[1;33m'
 NC='\033[0m' # No Color
 
-SKIP_UPDATES=1
+SKIP_UPDATES=0
 NO_GPU=1
 
 PROC_CNT=`getconf _NPROCESSORS_ONLN 2>/dev/null || getconf NPROCESSORS_ONLN 2>/dev/null || echo 1`
