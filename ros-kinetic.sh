@@ -11,8 +11,11 @@ NC='\033[0m' # No Color
 SKIP_UPDATES=0
 NO_GPU=1
 
+PROC_CNT=`getconf _NPROCESSORS_ONLN 2>/dev/null || getconf NPROCESSORS_ONLN 2>/dev/null || echo 1`
+
 echo -e "${YEL}CURRENT_DIR: $CURRENT_DIR${NC}"
 echo -e "${YEL}KINETIC_DIR: $KINETIC_DIR${NC}"
+echo -e "${YEL}PROC_CNT: $PROC_CNT${NC}"
 
 # Ask for SSH passphrase
 if [ -z "$SSH_AUTH_SOCK" ];
@@ -101,14 +104,14 @@ function workspace {
     # FIXME: Using own `.rosinstall` file to avoid broken packages. Could merge my changes.
     #rosinstall_generator desktop_full --rosdistro kinetic --deps --wet-only > kinetic-desktop-full-wet.rosinstall
     #wstool init -j8 src kinetic-desktop-full-wet.rosinstall
-    wstool init -j8 $DIR/src $DIR/$ROS
+    wstool init -j $PROC_CNT $DIR/src $DIR/$ROS
   else
     # Merge in any updates to original rosinstall.
     wstool merge -ky -t $DIR/src $DIR/$ROS
     if [ ! $SKIP_UPDATES -eq 1 ];
     then
       echo -e "${YEL}Updating ROS workspace.${NC}"
-      wstool update -j8 -t $DIR/src
+      wstool update -j $PROC_CNT -t $DIR/src
     else
       echo -e "${RED}Updating ROS workspace - skipped.${NC}"
     fi
@@ -142,8 +145,7 @@ function workspace {
   #  echo -e "${YEL}Skipping workspace build.${NC}"
   #else
     echo -e "${YEL}Building workspace with Catkin.${NC}"
-    # TODO: Use processor count
-    catkin build -j4 -w $DIR
+    catkin build -j $PROC_CNT -w $DIR
   #fi
 }
 
