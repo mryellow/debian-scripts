@@ -92,48 +92,52 @@ function workspace {
   fi
 
   echo -e "${YEL}Copying $ROS to workspace.${NC}"
-  cp -u $CURRENT_DIR/$ROS $DIR/$ROS
+  cp -u $CURRENT_DIR/assets/rosinstall/$ROS $DIR/$ROS
 
-  if [ ! -d $DIR/.catkin_tools ];
+  if [[ (! -d $DIR/.catkin_tools) || (! -f $DIR/src/.rosinstall) ]];
   then
     echo -e "${YEL}Initialising catkin workspace.${NC}"
     catkin init -w$DIR # --reset #> /dev/null #-s$DIR/src -l$DIR/log -b$DIR/build -d$DIR/devel -i$DIR/install
+
+    if [ $NO_GPU -eq 1 ];
+    then
+      echo -e "${YEL}Disabling CUDA support.${NC}"
+      catkin config -w$DIR --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF #> /dev/null
+    fi
+
+    if [ ! -z $EXT ];
+    then
+      echo -e "${YEL}Extending workspace $EXT.${NC}"
+      catkin config -w$DIR --extend $EXT #> /dev/null
+    #else
+    #  echo -e "${YEL}Root workspace.${NC}"
+    #  catkin config -w$DIR --no-extend
+    fi
+
+    if [ -z $EXT ];
+    then
+      echo -e "${YEL}Initialising rosinstall for root workspace.${NC}"
+      cp -u $CURRENT_DIR/assets/rosinstall/kinetic-init.rosinstall $DIR/kinetic-init.rosinstall
+      wstool init -j $PROC_CNT $DIR/src $DIR/kinetic-init.rosinstall
+    else
+      echo -e "${YEL}Initialising rosinstall for extended workspace.${NC}"
+      wstool init -j $PROC_CNT $DIR/src
+    fi
+
     # Generate `devel/setup.bash`
     catkin build -j $PROC_CNT -w $DIR
   fi
 
-  if [ ! -f $DIR/src/.rosinstall ];
+  #rosinstall_generator desktop_full --rosdistro kinetic --deps --wet-only > kinetic-desktop-full-wet.rosinstall
+
+  # Merge in any updates to original rosinstall.
+  wstool merge -ky -t $DIR/src $DIR/$ROS
+  if [ ! $SKIP_UPDATES -eq 1 ];
   then
-    echo -e "${YEL}Generating ROS workspace.${NC}"
-    # FIXME: Using own `.rosinstall` file to avoid broken packages. Could merge my changes.
-    #rosinstall_generator desktop_full --rosdistro kinetic --deps --wet-only > kinetic-desktop-full-wet.rosinstall
-    #wstool init -j8 src kinetic-desktop-full-wet.rosinstall
-    wstool init -j $PROC_CNT $DIR/src $DIR/$ROS
+    echo -e "${YEL}Updating ROS workspace.${NC}"
+    wstool update -j $PROC_CNT -t $DIR/src
   else
-    # Merge in any updates to original rosinstall.
-    wstool merge -ky -t $DIR/src $DIR/$ROS
-    if [ ! $SKIP_UPDATES -eq 1 ];
-    then
-      echo -e "${YEL}Updating ROS workspace.${NC}"
-      wstool update -j $PROC_CNT -t $DIR/src
-    else
-      echo -e "${RED}Updating ROS workspace - skipped.${NC}"
-    fi
-  fi
-
-  if [ $NO_GPU -eq 1 ];
-  then
-    echo -e "${YEL}Disabling CUDA support.${NC}"
-    catkin config -w$DIR --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF #> /dev/null
-  fi
-
-  if [ ! -z $EXT ];
-  then
-    echo -e "${YEL}Extending workspace $EXT.${NC}"
-    catkin config -w$DIR --extend $EXT #> /dev/null
-  #else
-  #  echo -e "${YEL}Root workspace.${NC}"
-  #  catkin config -w$DIR --no-extend
+    echo -e "${RED}Updating ROS workspace - skipped.${NC}"
   fi
 
   # Show resulting config
