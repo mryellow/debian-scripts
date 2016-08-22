@@ -932,14 +932,13 @@
     uri: https://github.com/ros-gbp/capabilities-release.git
     version: release/kinetic/capabilities
 - git:
-    local-name: slam_gmapping
-    uri: https://github.com/ros-gbp/slam_gmapping-release.git
-    version: release/kinetic/slam_gmapping
-- git:
     local-name: openslam_gmapping
     uri: https://github.com/ros-gbp/openslam_gmapping-release.git
     version: release/kinetic/openslam_gmapping
 # Non-release dependencies
+- git:
+    local-name: slam_gmapping
+    uri: https://github.com/ros-perception/slam_gmapping.git
 - git:
     local-name: object_recognition_msgs
     uri: https://github.com/wg-perception/object_recognition_msgs.git

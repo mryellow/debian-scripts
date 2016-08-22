@@ -144,7 +144,7 @@ function workspace {
   #catkin config -w$DIR
 
   echo -e "${YEL}Installing dependency packages.${NC}"
-  (source $DIR/devel/setup.bash && rosdep install --from-paths $DIR/src --ignore-src --rosdistro kinetic -y --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc))
+  (source $DIR/devel/setup.bash && rosdep install --from-paths $DIR/src --ignore-src --rosdistro kinetic --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc))
 
   #echo -e "${YEL}Build workspace $DIR? [Y/n]${NC}"
   #read input_variable
