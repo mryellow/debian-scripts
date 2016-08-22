@@ -34,16 +34,16 @@ if [ ! $SKIP_UPDATES -eq 1 ];
 then
   echo -e "${YEL}Updating apt.${NC}"
   sudo apt-get update
+
+  # TODO: Prompt to `sudo apt-get remove --purge ros-kinetic*`
+
+  echo -e "${YEL}Installing dependencies.${NC}"
+  sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
+  # FIXME: `python-numpy` not included in OpenCV3 dependencies.
+  sudo apt-get install -y python-catkin-tools python-numpy
 else
   echo -e "${RED}Updating apt - skipped.${NC}"
 fi
-
-# TODO: Prompt to `sudo apt-get remove --purge ros-kinetic*`
-
-echo -e "${YEL}Installing dependencies.${NC}"
-sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
-# FIXME: `python-numpy` not included in OpenCV3 dependencies.
-sudo apt-get install -y python-catkin-tools python-numpy
 
 if [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ];
 then
