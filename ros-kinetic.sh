@@ -37,6 +37,8 @@ else
   echo -e "${RED}Updating apt - skipped.${NC}"
 fi
 
+# TODO: Prompt to `sudo apt-get remove --purge ros-kinetic*`
+
 echo -e "${YEL}Installing dependencies.${NC}"
 sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
 # FIXME: `python-numpy` not included in OpenCV3 dependencies.
@@ -48,7 +50,7 @@ then
   sudo rosdep init
 fi
 
-# TODO: Add `/etc/ros/rosdep/local.yaml` with `python-pyassimp`
+# Create local rosdep repo
 if [ ! -f /etc/ros/rosdep/local.yaml ];
 then
   echo -e "${YEL}Creating rosdep local.yaml.${NC}"
@@ -118,22 +120,25 @@ function workspace {
   fi
 
   echo -e "${YEL}Configuring workspace paths.${NC}"
-  catkin config --init -w$DIR #-s$DIR/src -l$DIR/log -b$DIR/build -d$DIR/devel -i$DIR/install
+  catkin config --init -w$DIR > /dev/null #-s$DIR/src -l$DIR/log -b$DIR/build -d$DIR/devel -i$DIR/install
 
   if [ $NO_GPU -eq 1 ];
   then
     echo -e "${YEL}Disabling CUDA support.${NC}"
-    catkin config -w$DIR --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF
+    catkin config -w$DIR --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF > /dev/null
   fi
 
   if [ ! -z $EXT ];
   then
     echo -e "${YEL}Extending workspace $EXT.${NC}"
-    catkin config -w$DIR --extend $EXT
+    catkin config -w$DIR --extend $EXT > /dev/null
   #else
   #  echo -e "${YEL}Root workspace.${NC}"
   #  catkin config -w$DIR --no-extend
   fi
+
+  # Show resulting config
+  catkin config -w$DIR
 
   echo -e "${YEL}Installing dependency packages.${NC}"
   rosdep install --from-paths $DIR/src --ignore-src --rosdistro kinetic -y --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc)
