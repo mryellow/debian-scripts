@@ -26,6 +26,10 @@
     uri: https://github.com/tu-darmstadt-ros-pkg/hector_gazebo.git
     version: kinetic-devel
 - git:
+    local-name: hector_models
+    uri: https://github.com/tu-darmstadt-ros-pkg/hector_models.git
+    version: kinetic-devel
+- git:
     local-name: ratslam_ros
     uri: git@github.com:mryellow/ratslam.git
     version: ratslam_ros
@@ -37,13 +41,3 @@
     local-name: rtabmap_ros
     uri: git@github.com:mryellow/rtabmap_ros.git
     version: kinetic-devel
-- git:
-    local-name: moveit
-    uri: https://github.com/ros-planning/moveit.git
-    version: kinetic-devel
-- git:
-    local-name: moveit_resources
-    uri: https://github.com/ros-planning/moveit_resources.git
-- git:
-    local-name: moveit_msgs
-    uri: https://github.com/ros-planning/moveit_msgs.git

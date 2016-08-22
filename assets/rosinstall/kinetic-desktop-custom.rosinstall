@@ -923,6 +923,22 @@
     local-name: xacro
     uri: https://github.com/ros-gbp/xacro-release.git
     version: release/kinetic/xacro/1.11.1-0
+- git:
+    local-name: std_capabilities
+    uri: https://github.com/ros-gbp/std_capabilities-release
+    version: release/kinetic/std_capabilities
+- git:
+    local-name: capabilities
+    uri: https://github.com/ros-gbp/capabilities-release.git
+    version: release/kinetic/capabilities
+- git:
+    local-name: slam_gmapping
+    uri: https://github.com/ros-gbp/slam_gmapping-release.git
+    version: release/kinetic/slam_gmapping
+- git:
+    local-name: openslam_gmapping
+    uri: https://github.com/ros-gbp/openslam_gmapping-release.git
+    version: release/kinetic/openslam_gmapping
 # Non-release dependencies
 - git:
     local-name: object_recognition_msgs
@@ -962,6 +978,147 @@
 - git:
     local-name: navigation_msgs
     uri: https://github.com/ros-planning/navigation_msgs.git
+- git:
+    local-name: moveit
+    uri: https://github.com/ros-planning/moveit.git
+    version: kinetic-devel
+- git:
+    local-name: moveit_resources
+    uri: https://github.com/ros-planning/moveit_resources.git
+- git:
+    local-name: moveit_msgs
+    uri: https://github.com/ros-planning/moveit_msgs.git
+- git:
+    local-name: turtlebot_simulator
+    uri: https://github.com/turtlebot/turtlebot_simulator.git
+- git:
+    local-name: yujin_ocs
+    uri: https://github.com/yujinrobot/yujin_ocs.git
+    version: kinetic
+- git:
+    local-name: turtlebot
+    uri: https://github.com/turtlebot/turtlebot.git
+    version: kinetic
+- git:
+    local-name: turtlebot_apps
+    uri: https://github.com/turtlebot/turtlebot_apps.git
+- git:
+    local-name: turtlebot_create
+    uri: https://github.com/turtlebot/turtlebot_create.git
+- git:
+    local-name: turtlebot_msgs
+    uri: https://github.com/turtlebot/turtlebot_msgs.git
+- git:
+    local-name: stdr_simulator
+    uri: https://github.com/stdr-simulator-ros-pkg/stdr_simulator.git
+- git:
+    local-name: kobuki
+    uri: https://github.com/yujinrobot/kobuki.git
+    version: kinetic
+- git:
+    local-name: kobuki_core
+    uri: https://github.com/yujinrobot/kobuki_core.git
+    version: kinetic
+- git:
+    local-name: kobuki_desktop
+    uri: https://github.com/yujinrobot/kobuki_desktop.git
+    version: kinetic
+- git:
+    local-name: kobuki_msgs
+    uri: https://github.com/yujinrobot/kobuki_msgs.git
+    version: kinetic
+- git:
+    local-name: freenect_stack
+    uri: https://github.com/ros-drivers/freenect_stack.git
+- git:
+    local-name: ecl_core
+    uri: https://github.com/stonier/ecl_core.git
+- git:
+    local-name: ecl_tools
+    uri: https://github.com/stonier/ecl_tools.git
+- git:
+    local-name: ecl_lite
+    uri: https://github.com/stonier/ecl_lite.git
+- git:
+    local-name: ecl_navigation
+    uri: https://github.com/stonier/ecl_navigation.git
+- git:
+    local-name: yocs_msgs
+    uri: https://github.com/yujinrobot/yocs_msgs.git
+    version: kinetic
+- git:
+    local-name: linux_peripheral_interfaces
+    uri: https://github.com/ros-drivers/linux_peripheral_interfaces.git
+    version: kinetic
+- git:
+    local-name: robot_pose_publisher
+    uri: https://github.com/GT-RAIL/robot_pose_publisher
+    version: master
+- git:
+    local-name: ar_track_alvar
+    uri: https://github.com/sniekum/ar_track_alvar.git
+    version: kinetic-devel
+- git:
+    local-name: ar_track_alvar_msgs
+    uri: https://github.com/sniekum/ar_track_alvar_msgs.git
+- git:
+    local-name: rocon_app_platform
+    uri: https://github.com/robotics-in-concert/rocon_app_platform.git
+    version: kinetic
+- git:
+    local-name: rocon_tools
+    uri: https://github.com/robotics-in-concert/rocon_tools.git
+    version: kinetic
+- git:
+    local-name: rocon_multimaster
+    uri: https://github.com/robotics-in-concert/rocon_multimaster.git
+    version: kinetic
+- git:
+    local-name: rocon_msgs
+    uri: https://github.com/robotics-in-concert/rocon_msgs.git
+    version: kinetic
+- git:
+    local-name: rospy_message_converter
+    uri: https://github.com/baalexander/rospy_message_converter.git
+    version: master
+- git:
+    local-name: joystick_drivers
+    uri: https://github.com/ros-drivers/joystick_drivers.git
+- git:
+    local-name: world_canvas
+    uri: https://github.com/corot/world_canvas.git
+- git:
+    local-name: world_canvas_tools
+    uri: https://github.com/corot/world_canvas_tools.git
+- git:
+    local-name: world_canvas_libs
+    uri: https://github.com/corot/world_canvas_libs.git
+- git:
+    local-name: world_canvas_msgs
+    uri: https://github.com/corot/world_canvas_msgs.git
+- git:
+    local-name: astra_launch
+    uri: https://github.com/tfoote/ros_astra_launch.git
+- git:
+    local-name: astra_camera
+    uri: https://github.com/tfoote/ros_astra_camera.git
+- git:
+    local-name: realsense_camera
+    uri: https://github.com/BlazingForests/realsense_camera.git
+- git:
+    local-name: zeroconf_avahi_suite
+    uri: https://github.com/stonier/zeroconf_avahi_suite.git
+- git:
+    local-name: zeroconf_msgs
+    uri: https://github.com/stonier/zeroconf_msgs.git
+- git:
+    local-name: sophus
+    uri: https://github.com/stonier/sophus.git
+- git:
+    local-name: libfreenect
+    uri: https://github.com/ros-drivers/libfreenect.git
+    version: ros-devel
+
 # Modified/Patched packages
 - git:
     local-name: image_pipeline
