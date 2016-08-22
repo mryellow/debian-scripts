@@ -268,6 +268,10 @@
     uri: https://github.com/ros-gbp/gl_dependency-release.git
     version: release/kinetic/gl_dependency/1.1.0-0
 - git:
+    local-name: household_objects_database_msgs
+    uri: https://github.com/ros-gbp/household_objects_database_msgs-release.git
+    version: release/kinetic/household_objects_database_msgs
+- git:
     local-name: image_common/camera_calibration_parsers
     uri: https://github.com/ros-gbp/image_common-release.git
     version: release/kinetic/camera_calibration_parsers/1.11.10-0
@@ -327,6 +331,10 @@
     local-name: laser_pipeline
     uri: https://github.com/ros-gbp/laser_pipeline-release.git
     version: release/kinetic/laser_pipeline/1.6.2-0
+- git:
+    local-name: manipulation_msgs
+    uri: https://github.com/ros-gbp/manipulation_msgs-release.git
+    version: release/kinetic/manipulation_msgs
 - git:
     local-name: media_export
     uri: https://github.com/ros-gbp/media_export-release.git
@@ -392,9 +400,25 @@
     uri: https://github.com/ros-gbp/octomap-release.git
     version: release/kinetic/octomap/1.8.0-0
 - git:
+    local-name: octomap_msgs
+    uri: https://github.com/ros-gbp/octomap_msgs-release.git
+    version: release/kinetic/octomap_msgs/0.3.3-0
+- git:
+    local-name: octomap_ros
+    uri: https://github.com/ros-gbp/octomap_ros-release.git
+    version: release/kinetic/octomap_ros
+- git:
+    local-name: ompl
+    uri: https://github.com/ros-gbp/ompl-release.git
+    version: release/kinetic/ompl/1.2.0-0
+- git:
     local-name: opencv3
     uri: https://github.com/ros-gbp/opencv3-release.git
     version: release/kinetic/opencv3/3.1.0-16
+- git:
+    local-name: openni2_camera
+    uri: https://github.com/ros-gbp/openni2_camera-release.git
+    version: release/kinetic/openni2_camera
 - git:
     local-name: orocos_kinematics_dynamics/orocos_kdl
     uri: https://github.com/smits/orocos-kdl-release.git
@@ -459,6 +483,10 @@
     local-name: resource_retriever
     uri: https://github.com/ros-gbp/resource_retriever-release.git
     version: release/kinetic/resource_retriever/1.12.2-0
+- git:
+    local-name: rgbd_launch
+    uri: https://github.com/ros-gbp/rgbd_launch-release.git
+    version: release/kinetic/rgbd_launch
 - git:
     local-name: robot_model/collada_parser
     uri: https://github.com/ros-gbp/robot_model-release.git
@@ -828,6 +856,10 @@
     uri: https://github.com/ros-gbp/rviz-release.git
     version: release/kinetic/rviz/1.12.1-0
 - git:
+    local-name: srdfdom
+    uri: https://github.com/ros-gbp/srdfdom-release.git
+    version: release/kinetic/srdfdom
+- git:
     local-name: stage
     uri: https://github.com/ros-gbp/stage-release.git
     version: release/kinetic/stage/4.1.1-1
@@ -843,6 +875,10 @@
     local-name: urdf_tutorial
     uri: https://github.com/ros-gbp/urdf_tutorial-release.git
     version: release/kinetic/urdf_tutorial/0.2.4-0
+- git:
+    local-name: urdfdom_py
+    uri: https://github.com/ros-gbp/urdfdom_py-release.git
+    version: release/kinetic/urdfdom_py
 - git:
     local-name: vision_opencv/cv_bridge
     uri: https://github.com/ros-gbp/vision_opencv-release.git
@@ -880,9 +916,20 @@
     uri: https://github.com/ros-gbp/visualization_tutorials-release.git
     version: release/kinetic/visualization_tutorials/0.10.1-0
 - git:
+    local-name: warehouse_ros
+    uri: https://github.com/ros-gbp/warehouse_ros-release.git
+    version: release/kinetic/warehouse_ros
+- git:
     local-name: xacro
     uri: https://github.com/ros-gbp/xacro-release.git
     version: release/kinetic/xacro/1.11.1-0
+# Non-release dependencies
+- git:
+    local-name: object_recognition_msgs
+    uri: https://github.com/wg-perception/object_recognition_msgs.git
+- git:
+    local-name: geographic_info
+    uri: https://github.com/ros-geographic-info/geographic_info.git
 - git:
     local-name: ros_control
     uri: https://github.com/ros-controls/ros_control.git
@@ -900,15 +947,21 @@
     uri: https://github.com/ros-controls/realtime_tools.git
     version: kinetic-devel
 - git:
-    local-name: ompl
-    uri: https://github.com/ros-gbp/ompl-release.git
-    version: release/kinetic/ompl/1.2.0-0
+    local-name: robot_localization
+    uri: https://github.com/cra-ros-pkg/robot_localization.git
+    version: kinetic-devel
+- git:
+    local-name: depthimage_to_laserscan
+    uri: https://github.com/ros-perception/depthimage_to_laserscan.git
+- git:
+    local-name: openni2_launch
+    uri: https://github.com/ros-drivers/openni2_launch.git
 # Modified/Patched packages
 - git:
     local-name: image_pipeline
     uri: git@github.com:mryellow/image_pipeline.git
     version: kinetic-devel
-#- git:
-#    local-name: navigation
-#    uri: git@github.com:mryellow/navigation.git
-#    version: kinetic-devel
+- git:
+    local-name: navigation
+    uri: git@github.com:mryellow/navigation.git
+    version: kinetic-devel
