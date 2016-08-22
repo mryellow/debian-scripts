@@ -27,7 +27,10 @@ then
 fi
 if [ ! $SKIP_UPDATES -eq 1 ];
 then
+  echo -e "${YEL}Updating apt.${NC}"
   sudo apt-get update
+else
+  echo -e "${RED}Updating apt - skipped.${NC}"
 fi
 
 echo -e "${YEL}Installing dependencies.${NC}"
@@ -64,6 +67,8 @@ if [ ! $SKIP_UPDATES -eq 1 ];
 then
   echo -e "${YEL}Updating rosdep.${NC}"
   rosdep update
+else
+  echo -e "${RED}Updating rosdep - skipped.${NC}"
 fi
 
 # Create workspaces given path and rosinstall file.
@@ -97,16 +102,18 @@ function workspace {
     #wstool init -j8 src kinetic-desktop-full-wet.rosinstall
     wstool init -j8 $DIR/src $DIR/$ROS
   else
-    echo -e "${YEL}Updating ROS workspace.${NC}"
     # Merge in any updates to original rosinstall.
     wstool merge -ky -t $DIR/src $DIR/$ROS
     if [ ! $SKIP_UPDATES -eq 1 ];
     then
+      echo -e "${YEL}Updating ROS workspace.${NC}"
       wstool update -j8 -t $DIR/src
+    else
+      echo -e "${RED}Updating ROS workspace - skipped.${NC}"
     fi
   fi
 
-  echo -e "${YEL}Configuring workspace location.${NC}"
+  echo -e "${YEL}Configuring workspace paths.${NC}"
   catkin config --init -w$DIR -s$DIR/src -l$DIR/log -b$DIR/build -d$DIR/devel -i$DIR/install
 
   echo -e "${YEL}Disabling CUDA support.${NC}"
@@ -116,11 +123,12 @@ function workspace {
   then
     echo -e "${YEL}Extending workspace $EXT.${NC}"
     catkin config --extend $EXT
+  #else
+  #  echo -e "${YEL}Root workspace.${NC}"
+  #  catkin config --no-extend
   fi
 
   echo -e "${YEL}Installing dependency packages.${NC}"
-  source $DIR/devel/setup.bash
-  echo -e "${YEL}ROS_PACKAGE_PATH: $ROS_PACKAGE_PATH${NC}"
   rosdep install --from-paths $DIR/src --ignore-src --rosdistro kinetic -y --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc)
 
   #echo -e "${YEL}Build workspace $DIR? [Y/n]${NC}"
@@ -130,7 +138,8 @@ function workspace {
   #  echo -e "${YEL}Skipping workspace build.${NC}"
   #else
     echo -e "${YEL}Building workspace with Catkin.${NC}"
-    catkin build -w $DIR
+    # TODO: Use processor count
+    catkin build -j4 -w $DIR
   #fi
 }
 

@@ -892,6 +892,10 @@
     uri: https://github.com/ros-controls/ros_controllers.git
     version: kinetic-devel
 - git:
+    local-name: control_toolbox
+    uri: https://github.com/ros-controls/control_toolbox.git
+    version: kinetic-devel
+- git:
     local-name: realtime_tools
     uri: https://github.com/ros-controls/realtime_tools.git
     version: kinetic-devel
