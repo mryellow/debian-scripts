@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 RED='\033[0;31m'
 YEL='\033[1;33m'
 NC='\033[0m' # No Color
@@ -41,7 +43,7 @@ echo -e "${YEL}Reconfigure fonts.${NC}"
 sudo apt-get install -y ttf-dejavu ttf-liberation ttf-mscorefonts-installer xfonts-terminus
 sudo dpkg-reconfigure fontconfig-config
 sudo dpkg-reconfigure fontconfig
-cp -u fonts.conf ~/.fonts.conf
+cp -u $CURRENT_DIR/fonts.conf ~/.fonts.conf
 
 # FIXME: Host invalid.
 #if [ ! -d ~/src/infinality/installed ]
@@ -94,6 +96,15 @@ then
   sudo dpkg -i ~/src/google-chrome-stable_current_amd64.deb
   sudo dpkg -i ~/src/steam_latest.deb
   sudo apt-get -fy install
+
+  if ! grep "showInvisibles" ~/.atom/config.cson;
+  then
+    echo -e "${YEL}Configuring Atom.${NC}"
+    cat >> ~/.atom/config.cson <<EOF
+  editor:
+    showInvisibles: true
+EOF
+  fi
   touch ~/src/installed
 fi
 
