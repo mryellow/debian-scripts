@@ -24,11 +24,7 @@ if [ ! -f ~/.gnupg/gpg.conf ]
 then
   echo -e "${YEL}Creating GPG key.${NC}"
   mkdir -p ~/.gnupg/
-  cat >> ~/.gnupg/gpg.conf <<EOF
-personal-digest-preferences SHA256
-cert-digest-algo SHA256
-default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
-EOF
+  cp -u $CURRENT_DIR/assets/gnupg/gpg.conf ~/.gnupg/gpg.conf
   gpg --gen-key
 fi
 
@@ -44,7 +40,7 @@ echo -e "${YEL}Reconfigure fonts.${NC}"
 sudo apt-get install -y ttf-dejavu ttf-liberation ttf-mscorefonts-installer xfonts-terminus
 sudo dpkg-reconfigure fontconfig-config
 sudo dpkg-reconfigure fontconfig
-cp -u $CURRENT_DIR/fonts.conf ~/.fonts.conf
+cp -u $CURRENT_DIR/assets/fonts.conf ~/.fonts.conf
 
 # FIXME: Host invalid.
 #if [ ! -d ~/src/infinality/installed ]

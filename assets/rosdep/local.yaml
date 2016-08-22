@@ -1,0 +1,4 @@
+python-pyassimp:
+    debian:
+      jessie:
+        apt: [python-pyassimp]

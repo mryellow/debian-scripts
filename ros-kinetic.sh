@@ -55,19 +55,12 @@ fi
 if [ ! -f /etc/ros/rosdep/local.yaml ];
 then
   echo -e "${YEL}Creating rosdep local.yaml.${NC}"
-  sudo tee /etc/ros/rosdep/local.yaml << EOF
-python-pyassimp:
-    debian:
-      jessie:
-        apt: [python-pyassimp]
-EOF
+  sudo cp -u $CURRENT_DIR/assets/rosdep/local.yaml /etc/ros/rosdep/local.yaml
 fi
 if [ ! -f /etc/ros/rosdep/sources.list.d/10-local.list ];
 then
   echo -e "${YEL}Adding rosdep local.yaml.${NC}"
-  sudo tee /etc/ros/rosdep/sources.list.d/10-local.list << EOF
-yaml file:///etc/ros/rosdep/local.yaml
-EOF
+  sudo cp -u $CURRENT_DIR/assets/rosdep/10-local.list /etc/ros/rosdep/sources.list.d/10-local.list
 fi
 
 if [ ! $SKIP_UPDATES -eq 1 ];
