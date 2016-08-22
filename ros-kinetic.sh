@@ -1,5 +1,6 @@
 #!/bin/bash
-set -e
+set -o errexit
+set -o pipefail
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 KINETIC_DIR="/home/$USER/work/ros-kinetic"
