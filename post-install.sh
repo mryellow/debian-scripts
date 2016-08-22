@@ -42,6 +42,9 @@ sudo dpkg-reconfigure fontconfig-config
 sudo dpkg-reconfigure fontconfig
 cp -u $CURRENT_DIR/assets/fonts.conf ~/.fonts.conf
 
+echo -e "${YEL}Generating locales.${NC}"
+sudo dpkg-reconfigure locales
+
 # FIXME: Host invalid.
 #if [ ! -d ~/src/infinality/installed ]
 #then
