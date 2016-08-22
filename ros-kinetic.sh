@@ -9,7 +9,7 @@ RED='\033[0;31m'
 YEL='\033[1;33m'
 NC='\033[0m' # No Color
 
-SKIP_UPDATES=0
+SKIP_UPDATES=1
 NO_GPU=1
 
 PROC_CNT=`getconf _NPROCESSORS_ONLN 2>/dev/null || getconf NPROCESSORS_ONLN 2>/dev/null || echo 1`
@@ -80,7 +80,7 @@ function workspace {
   then
     EXT=""
   else
-    EXT="$KINETIC_DIR/$3" # Extend workspace
+    EXT="$KINETIC_DIR/$3/devel" # Extend workspace
   fi
 
   echo -e "${YEL}Workspace: $DIR - $ROS${NC}"
@@ -93,6 +93,14 @@ function workspace {
 
   echo -e "${YEL}Copying $ROS to workspace.${NC}"
   cp -u $CURRENT_DIR/$ROS $DIR/$ROS
+
+  if [ ! -d $DIR/.catkin_tools ];
+  then
+    echo -e "${YEL}Initialising catkin workspace.${NC}"
+    catkin init -w$DIR # --reset #> /dev/null #-s$DIR/src -l$DIR/log -b$DIR/build -d$DIR/devel -i$DIR/install
+    # Generate `devel/setup.bash`
+    catkin build -j $PROC_CNT -w $DIR
+  fi
 
   if [ ! -f $DIR/src/.rosinstall ];
   then
@@ -113,29 +121,26 @@ function workspace {
     fi
   fi
 
-  echo -e "${YEL}Configuring workspace paths.${NC}"
-  catkin config --init -w$DIR > /dev/null #-s$DIR/src -l$DIR/log -b$DIR/build -d$DIR/devel -i$DIR/install
-
   if [ $NO_GPU -eq 1 ];
   then
     echo -e "${YEL}Disabling CUDA support.${NC}"
-    catkin config -w$DIR --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF > /dev/null
+    catkin config -w$DIR --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF #> /dev/null
   fi
 
   if [ ! -z $EXT ];
   then
     echo -e "${YEL}Extending workspace $EXT.${NC}"
-    catkin config -w$DIR --extend $EXT > /dev/null
+    catkin config -w$DIR --extend $EXT #> /dev/null
   #else
   #  echo -e "${YEL}Root workspace.${NC}"
   #  catkin config -w$DIR --no-extend
   fi
 
   # Show resulting config
-  catkin config -w$DIR
+  #catkin config -w$DIR
 
   echo -e "${YEL}Installing dependency packages.${NC}"
-  rosdep install --from-paths $DIR/src --ignore-src --rosdistro kinetic -y --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc)
+  (source $DIR/devel/setup.bash && rosdep install --from-paths $DIR/src --ignore-src --rosdistro kinetic -y --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc))
 
   #echo -e "${YEL}Build workspace $DIR? [Y/n]${NC}"
   #read input_variable
@@ -144,7 +149,7 @@ function workspace {
   #  echo -e "${YEL}Skipping workspace build.${NC}"
   #else
     echo -e "${YEL}Building workspace with Catkin.${NC}"
-    catkin build -j $PROC_CNT -w $DIR
+    (source $DIR/devel/setup.bash && catkin build -j $PROC_CNT -w $DIR)
   #fi
 }
 
