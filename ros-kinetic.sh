@@ -8,7 +8,8 @@ RED='\033[0;31m'
 YEL='\033[1;33m'
 NC='\033[0m' # No Color
 
-SKIP_UPDATES=1
+SKIP_UPDATES=0
+NO_GPU=1
 
 echo -e "${YEL}CURRENT_DIR: $CURRENT_DIR${NC}"
 echo -e "${YEL}KINETIC_DIR: $KINETIC_DIR${NC}"
@@ -114,10 +115,13 @@ function workspace {
   fi
 
   echo -e "${YEL}Configuring workspace paths.${NC}"
-  catkin config --init -w$DIR -s$DIR/src -l$DIR/log -b$DIR/build -d$DIR/devel -i$DIR/install
+  catkin config --init -w$DIR #-s$DIR/src -l$DIR/log -b$DIR/build -d$DIR/devel -i$DIR/install
 
-  echo -e "${YEL}Disabling CUDA support.${NC}"
-  catkin config --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF
+  if [ $NO_GPU -eq 1 ];
+  then
+    echo -e "${YEL}Disabling CUDA support.${NC}"
+    catkin config --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF
+  fi
 
   if [ ! -z $EXT ];
   then
@@ -143,8 +147,8 @@ function workspace {
   #fi
 }
 
-workspace catkin_ws kinetic-desktop-custom.rosinstall
+workspace root_ws kinetic-desktop-custom.rosinstall
 #source $KINETIC_DIR/catkin_ws/devel/setup.bash
-workspace ws kinetic-kulbu.rosinstall catkin_ws
+workspace kulbu_ws kinetic-kulbu.rosinstall root_ws
 #cd $KINETIC_DIR/ws
 #source $KINETIC_DIR/ws/devel/setup.bash
