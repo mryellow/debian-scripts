@@ -206,7 +206,7 @@
 - git:
     local-name: geometric_shapes
     uri: https://github.com/ros-gbp/geometric_shapes-release.git
-    version: release/kinetic/geometric_shapes/0.4.4-0
+    version: release/kinetic/geometric_shapes/0.5.0-0
 - git:
     local-name: geometry/eigen_conversions
     uri: https://github.com/ros-gbp/geometry-release.git
@@ -978,10 +978,6 @@
     local-name: navigation_msgs
     uri: https://github.com/ros-planning/navigation_msgs.git
 - git:
-    local-name: moveit
-    uri: https://github.com/ros-planning/moveit.git
-    version: kinetic-devel
-- git:
     local-name: moveit_resources
     uri: https://github.com/ros-planning/moveit_resources.git
 - git:
@@ -1112,19 +1108,24 @@
 - git:
     local-name: image_pipeline
     uri: git@github.com:mryellow/image_pipeline.git
-    version: kinetic-devel
+    version: kinetic-custom
 - git:
     local-name: navigation
     uri: git@github.com:mryellow/navigation.git
-    version: kinetic-devel
+    version: kinetic-custom
 - git:
     local-name: freenect_stack
     uri: git@github.com:mryellow/freenect_stack.git
+    version: kinetic-custom
 - git:
     local-name: stdr_simulator
     uri: git@github.com:mryellow/stdr_simulator.git
-    version: kinetic-devel
+    version: kinetic-custom
 - git:
     local-name: realsense_camera
     uri: git@github.com:mryellow/realsense_camera.git
-    version: kinetic-devel
+    version: kinetic-custom
+- git:
+    local-name: moveit
+    uri: git@github.com:mryellow/moveit.git
+    version: kinetic-custom
