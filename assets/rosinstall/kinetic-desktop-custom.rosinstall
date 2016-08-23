@@ -978,6 +978,10 @@
     local-name: navigation_msgs
     uri: https://github.com/ros-planning/navigation_msgs.git
 - git:
+    local-name: moveit
+    uri: https://github.com/ros-planning/moveit.git
+    version: kinetic-devel
+- git:
     local-name: moveit_resources
     uri: https://github.com/ros-planning/moveit_resources.git
 - git:
@@ -1124,8 +1128,4 @@
 - git:
     local-name: realsense_camera
     uri: git@github.com:mryellow/realsense_camera.git
-    version: kinetic-custom
-- git:
-    local-name: moveit
-    uri: git@github.com:mryellow/moveit.git
     version: kinetic-custom
