@@ -488,34 +488,6 @@
     uri: https://github.com/ros-gbp/rgbd_launch-release.git
     version: release/kinetic/rgbd_launch
 - git:
-    local-name: robot_model/collada_parser
-    uri: https://github.com/ros-gbp/robot_model-release.git
-    version: release/kinetic/collada_parser/1.12.3-0
-- git:
-    local-name: robot_model/collada_urdf
-    uri: https://github.com/ros-gbp/robot_model-release.git
-    version: release/kinetic/collada_urdf/1.12.3-0
-- git:
-    local-name: robot_model/joint_state_publisher
-    uri: https://github.com/ros-gbp/robot_model-release.git
-    version: release/kinetic/joint_state_publisher/1.12.3-0
-- git:
-    local-name: robot_model/kdl_parser
-    uri: https://github.com/ros-gbp/robot_model-release.git
-    version: release/kinetic/kdl_parser/1.12.3-0
-- git:
-    local-name: robot_model/robot_model
-    uri: https://github.com/ros-gbp/robot_model-release.git
-    version: release/kinetic/robot_model/1.12.3-0
-- git:
-    local-name: robot_model/urdf
-    uri: https://github.com/ros-gbp/robot_model-release.git
-    version: release/kinetic/urdf/1.12.3-0
-- git:
-    local-name: robot_model/urdf_parser_plugin
-    uri: https://github.com/ros-gbp/robot_model-release.git
-    version: release/kinetic/urdf_parser_plugin/1.12.3-0
-- git:
     local-name: robot_state_publisher
     uri: https://github.com/ros-gbp/robot_state_publisher-release.git
     version: release/kinetic/robot_state_publisher/1.13.2-0
@@ -1128,4 +1100,8 @@
 - git:
     local-name: realsense_camera
     uri: git@github.com:mryellow/realsense_camera.git
+    version: kinetic-custom
+- git:
+    local-name: robot_model
+    uri: git@github.com:mryellow/robot_model.git
     version: kinetic-custom
