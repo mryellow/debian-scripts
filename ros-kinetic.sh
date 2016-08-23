@@ -19,6 +19,7 @@ echo -e "${YEL}KINETIC_DIR: $KINETIC_DIR${NC}"
 echo -e "${YEL}PROC_CNT: $PROC_CNT${NC}"
 
 # Ask for SSH passphrase
+# FIXME: Already set after reboot, although passphrase not saved.
 if [ -z "$SSH_AUTH_SOCK" ];
 then
   ssh-add
@@ -41,6 +42,7 @@ then
   sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
   # FIXME: `python-numpy` not included in OpenCV3 dependencies.
   sudo apt-get install -y python-catkin-tools python-numpy
+  sudo apt-get install -y cmake-qt-gui
 else
   echo -e "${RED}Updating apt - skipped.${NC}"
 fi

@@ -68,9 +68,11 @@ sudo apt-get install -y redshift-plasmoid
 
 echo -e "${YEL}Installing utils.${NC}"
 sudo apt-get install -y apg xclip
+sudo apt-get install -y python-virtualenv python-imaging python-yaml libproj0
+sudo apt-get install -y python-yaml libgeos-dev python-lxml libgdal-dev python-shapely
 
 echo -e "${YEL}Installing common software.${NC}"
-sudo apt-get install -y plasma-widget-ktorrent
+sudo apt-get install -y plasma-widget-ktorrent rawtherapee qgis
 
 if [ ! -f ~/src/installed ];
 then
@@ -90,11 +92,22 @@ then
     echo -e "${YEL}Downloading Steam.${NC}"
     wget -O ~/src/steam_latest.deb https://steamcdn-a.akamaihd.net/client/installer/steam.deb
   fi
+  if [ ! -f ~/src/mendeleydesktop-latest.deb ];
+  then
+    echo -e "${YEL}Downloading Mendeley.${NC}"
+    if [ `getconf LONG_BIT` = "64" ];
+    then
+        wget -O ~/src/mendeleydesktop-latest.deb https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
+    else
+        wget -O ~/src/mendeleydesktop-latest.deb https://www.mendeley.com/repositories/ubuntu/stable/i386/mendeleydesktop-latest
+    fi
+  fi
 
   echo -e "${YEL}Installing stand-alone packages.${NC}"
   sudo dpkg -i ~/src/atom-amd64.deb
   sudo dpkg -i ~/src/google-chrome-stable_current_amd64.deb
   sudo dpkg -i ~/src/steam_latest.deb
+  sudo dpkg -i ~/src/mendeleydesktop-latest.deb
   sudo apt-get -fy install
 
   if ! grep "showInvisibles" ~/.atom/config.cson;
