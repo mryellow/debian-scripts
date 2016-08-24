@@ -3,7 +3,7 @@
 services:
   wms:
     image_formats: ['image/png', 'image/jpeg', 'image/gif', 'image/tiff']
-    #srs: ['EPSG:3857', 'EPSG:4283']
+    #srs: ['EPSG:3857', 'EPSG:4283', 'EPSG:4326']
     on_source_errors: raise
     md:
       title: Australian Maps
@@ -11,13 +11,13 @@ services:
 
 layers:
   # DEM
-  # FIXME: `calculate_bbox` error with GDA94 grid `bbox`
-#  - name: dem_lidar_5m
-#    title: "[MP] DEM LiDAR 5m"
-#    sources: [dem_lidar_5m_cache]
-#  - name: dem_lidar_25m
-#    title: "[MP] DEM LiDAR 25m"
-#    sources: [dem_lidar_25m_cache]
+  # FIXME: `layers` invalid in some areas on source end.
+  - name: dem_lidar_5m
+    title: "[MP] DEM LiDAR 5m"
+    sources: [dem_lidar_5m_cache]
+  - name: dem_lidar_25m
+    title: "[MP] DEM LiDAR 25m"
+    sources: [dem_lidar_25m_cache]
   # NSW
   - name: nsw_topo1
     title: "[MP] NSW Topo (1)"
@@ -64,25 +64,24 @@ layers:
           - name: cadastre_labels
             title: "[MP] NSW Cadastre - Labels"
             sources: [nsw_cadastre_cadastre_labels_cache]
-# FIXME: `calculate_bbox` error with GDA94 grid `bbox`
-#  - name: nsw_fossicking
-#    title: "[MP] NSW Fossicking Districts"
-#    sources: [nsw_fossicking_cache]
-#  - name: nsw_minerals
-#    title: "[MP] NSW Mineral Occurances"
-#    sources: [nsw_minerals_cache]
+  - name: nsw_fossicking
+    title: "[MP] NSW Fossicking Districts"
+    sources: [nsw_fossicking_cache]
+  - name: nsw_minerals
+    title: "[MP] NSW Mineral Occurances"
+    sources: [nsw_minerals_cache]
   # QLD
   - name: qld_topo
     title: "[MP] QLD Topo"
     sources: [qld_topo_cache]
 
 caches:
-#  dem_lidar_5m_cache:
-#    grids: [gda94]
-#    sources: [dem_lidar_5m]
-#  dem_lidar_25m_cache:
-#    grids: [gda94]
-#    sources: [dem_lidar_25m]
+  dem_lidar_5m_cache:
+    grids: [gda94]
+    sources: [dem_lidar_5m]
+  dem_lidar_25m_cache:
+    grids: [gda94]
+    sources: [dem_lidar_25m]
   nsw_topo1_cache:
     grids: [webmercator]
     sources: [nsw_topo1]
@@ -130,22 +129,22 @@ caches:
     sources: [qld_topo]
 
 sources:
-#  dem_lidar_5m:
-#    type: wms
-#    req:
-#      url: http://services.ga.gov.au/site_9/services/DEM_LiDAR_5m/MapServer/WMSServer?
-#      layers: Image
-#    coverage:
-#      bbox: [-45.949852,113.760233,-9.205568,162.000033]
-#      srs: 'EPSG:4283' # GDA94
-#  dem_lidar_25m:
-#    type: wms
-#    req:
-#      url: http://services.ga.gov.au/site_9/services/DEM_LiDAR_25m/MapServer/WMSServer?
-#      layers: Image
-#    coverage:
-#      bbox: [-43.996225,113.760232,-9.205591,156.780604]
-#      srs: 'EPSG:4283' # GDA94
+  dem_lidar_5m:
+    type: wms
+    req:
+      url: http://services.ga.gov.au/site_9/services/DEM_LiDAR_5m/MapServer/WMSServer?
+      layers: Image
+    coverage:
+      bbox: [113.760233,-45.949852,162.000033,-9.205568]
+      srs: 'EPSG:4283' # GDA94
+  dem_lidar_25m:
+    type: wms
+    req:
+      url: http://services.ga.gov.au/site_9/services/DEM_LiDAR_25m/MapServer/WMSServer?
+      layers: Image
+    coverage:
+      bbox: [113.760232,-43.996225,156.780604,-9.205591]
+      srs: 'EPSG:4283' # GDA94
   nsw_topo1:
     type: tile
     url: http://maps.six.nsw.gov.au/arcgis/rest/services/sixmaps/LPITopoMap_S1/MapServer/tile/%(z)s/%(y)s/%(x)s
@@ -253,6 +252,7 @@ sources:
     coverage:
       bbox: [15695971.703500,-4500719.260500,17709213.067500,-3268784.951625]
       srs: 'EPSG:3857'
+  # https://spatial.industry.nsw.gov.au/arcgis/rest/services/Minerals
   nsw_fossicking:
     type: wms
     req:
@@ -260,7 +260,7 @@ sources:
       layers: 0
       transparent: true
     coverage:
-      bbox: [-36.806092,141.155805,-28.633561,152.451955]
+      bbox: [141.155805,-36.806092,152.451955,-28.633561]
       srs: 'EPSG:4283'
   nsw_minerals:
     type: wms
@@ -269,7 +269,7 @@ sources:
       layers: 0
       transparent: true
     coverage:
-      bbox: [-37.390845,141.002352,-28.022663,153.630347]
+      bbox: [141.002352,-37.390845,153.630347,-28.022663]
       srs: 'EPSG:4326'
   qld_topo:
     type: wms
@@ -289,7 +289,7 @@ grids:
   gda94:
     srs: 'EPSG:4283'
     origin: nw
-    bbox: [-45.0000,108.0000,-10.0000,155.0000]
+    bbox: [108.0000,-45.0000,155.0000,-10.0000]
     #bbox_srs: 'EPSG:4326'
 
 globals:
