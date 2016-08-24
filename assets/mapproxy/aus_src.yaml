@@ -64,12 +64,43 @@ layers:
           - name: cadastre_labels
             title: "[MP] NSW Cadastre - Labels"
             sources: [nsw_cadastre_cadastre_labels_cache]
-  - name: nsw_fossicking
-    title: "[MP] NSW Fossicking Districts"
-    sources: [nsw_fossicking_cache]
   - name: nsw_minerals
-    title: "[MP] NSW Mineral Occurances"
-    sources: [nsw_minerals_cache]
+    title: "[MP] NSW Minerals"
+    layers:
+    - name: nsw_fossicking
+      title: "[MP] NSW Fossicking Districts"
+      sources: [nsw_fossicking_cache]
+    - name: nsw_mineral_occurances
+      title: "[MP] NSW Mineral Occurances"
+      sources: [nsw_mineral_occurances_cache]
+      legendurl: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/NSWMineralOccurrences/MapServer/WmsServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=0
+    - name: nsw_surface_geology
+      title: "[MP] NSW 1500K Surface Geology"
+      sources: [nsw_surface_geology_cache]
+    - name: nsw_geology
+      title: "[MP] NSW Geological"
+      layers:
+        - name: nsw_geology_zone56_cip
+          title: "[MP] CENOZOIC IGNEOUS PROVINCE"
+          sources: [nsw_geology_zone56_cip_cache]
+        - name: nsw_geology_zone56_csp
+          title: "[MP] CENOZOIC SEDIMENTARY PROVINCE"
+          sources: [nsw_geology_zone56_csp_cache]
+        - name: nsw_geology_zone56_gab
+          title: "[MP] GREAT AUSTRALIAN BASIN"
+          sources: [nsw_geology_zone56_gab_cache]
+        - name: nsw_geology_zone56_lao
+          title: "[MP] LACHLAN OROGEN"
+          sources: [nsw_geology_zone56_lao_cache]
+        - name: nsw_geology_zone56_mip
+          title: "[MP] MESOZOIC IGNEOUS PROVINCE"
+          sources: [nsw_geology_zone56_mip_cache]
+        - name: nsw_geology_zone56_neo
+          title: "[MP] NEW ENGLAND OROGEN"
+          sources: [nsw_geology_zone56_neo_cache]
+        - name: nsw_geology_zone56_ptb
+          title: "[MP] PERMO-TRIASSIC BASINS"
+          sources: [nsw_geology_zone56_ptb_cache]
   # QLD
   - name: qld_topo
     title: "[MP] QLD Topo"
@@ -121,14 +152,39 @@ caches:
   nsw_fossicking_cache:
     grids: [gda94]
     sources: [nsw_fossicking]
-  nsw_minerals_cache:
+  nsw_mineral_occurances_cache:
     grids: [geodetic]
-    sources: [nsw_minerals]
+    sources: [nsw_mineral_occurances]
+  nsw_surface_geology_cache:
+    grids: [webmercator]
+    sources: [nsw_surface_geology]
+  nsw_geology_zone56_cip_cache:
+    grids: [webmercator]
+    sources: [nsw_geology_zone56_cip]
+  nsw_geology_zone56_csp_cache:
+    grids: [webmercator]
+    sources: [nsw_geology_zone56_csp]
+  nsw_geology_zone56_gab_cache:
+    grids: [webmercator]
+    sources: [nsw_geology_zone56_gab]
+  nsw_geology_zone56_lao_cache:
+    grids: [webmercator]
+    sources: [nsw_geology_zone56_lao]
+  nsw_geology_zone56_mip_cache:
+    grids: [webmercator]
+    sources: [nsw_geology_zone56_mip]
+  nsw_geology_zone56_neo_cache:
+    grids: [webmercator]
+    sources: [nsw_geology_zone56_neo]
+  nsw_geology_zone56_ptb_cache:
+    grids: [webmercator]
+    sources: [nsw_geology_zone56_ptb]
   qld_topo_cache:
     grids: [webmercator]
     sources: [qld_topo]
 
 sources:
+  # DEM
   dem_lidar_5m:
     type: wms
     req:
@@ -145,6 +201,7 @@ sources:
     coverage:
       bbox: [113.760232,-43.996225,156.780604,-9.205591]
       srs: 'EPSG:4283' # GDA94
+  # NSW
   nsw_topo1:
     type: tile
     url: http://maps.six.nsw.gov.au/arcgis/rest/services/sixmaps/LPITopoMap_S1/MapServer/tile/%(z)s/%(y)s/%(x)s
@@ -171,6 +228,7 @@ sources:
     coverage:
       bbox: [15499750.634300,-4629153.206800,17732075.828300,-3074018.396000]
       srs: 'EPSG:3857'
+  # NSW Cadastre
   nsw_cadastre_lot:
     type: wms
     req:
@@ -252,6 +310,7 @@ sources:
     coverage:
       bbox: [15695971.703500,-4500719.260500,17709213.067500,-3268784.951625]
       srs: 'EPSG:3857'
+  # NSW Minerals
   # https://spatial.industry.nsw.gov.au/arcgis/rest/services/Minerals
   nsw_fossicking:
     type: wms
@@ -262,7 +321,7 @@ sources:
     coverage:
       bbox: [141.155805,-36.806092,152.451955,-28.633561]
       srs: 'EPSG:4283'
-  nsw_minerals:
+  nsw_mineral_occurances:
     type: wms
     req:
       url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/NSWMineralOccurrences/MapServer/WMSServer?
@@ -271,6 +330,80 @@ sources:
     coverage:
       bbox: [141.002352,-37.390845,153.630347,-28.022663]
       srs: 'EPSG:4326'
+  #https://spatial.industry.nsw.gov.au/arcgis/rest/services/Minerals/NSW_1500K_Surface_Geology/MapServer/WMTS/1.0.0/WMTSCapabilities.xml
+  nsw_surface_geology:
+    type: tile
+    #url: https://spatial.industry.nsw.gov.au/arcgis/rest/services/Minerals/NSW_1500K_Surface_Geology/MapServer/tile/%(z)s/%(y)s/%(x)s
+    url: http://spatial.industry.nsw.gov.au/arcgis/rest/services/Minerals/NSW_1500K_Surface_Geology/MapServer/WMTS/tile/1.0.0/Minerals_NSW_1500K_Surface_Geology/default/default028mm/0/%(z)s/%(y)s/%(x)s.%(format)s
+    transparent: true
+    grid: webmercator
+    coverage:
+      bbox: [15695970.275909876,-4509714.1303416155,17102950.44711271,-3268829.1664908603]
+      srs: 'EPSG:3857'
+  nsw_geology_zone56_cip:
+    type: wms
+    req:
+      url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_CIP/MapServer/WMSServer?
+      layers: 1,2,3
+      transparent: true
+    coverage:
+      bbox: [16697923.537401,-4305629.585912,17099648.950232,-3265595.497279]
+      srs: 'EPSG:3857'
+  nsw_geology_zone56_csp:
+    type: wms
+    req:
+      url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_CSP/MapServer/WMSServer?
+      layers: 1,2,3
+      transparent: true
+    coverage:
+      bbox: [16683701.483970,-4509739.275797,17102998.731440,-3263146.688834]
+      srs: 'EPSG:3857'
+  nsw_geology_zone56_gab:
+    type: wms
+    req:
+      url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_GAB/MapServer/WMSServer?
+      layers: 1,2,3,4,5
+      transparent: true
+    coverage:
+      bbox: [16697871.543751,-4060832.813242,17102998.731439,-3273186.004357]
+      srs: 'EPSG:3857'
+  nsw_geology_zone56_lao:
+    type: wms
+    req:
+      url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_LAO/MapServer/WMSServer?
+      layers: 1,2,3,4,5,6
+      transparent: true
+    coverage:
+      bbox: [16697871.543698,-4475924.064609,16867107.252536,-3312054.966281]
+      srs: 'EPSG:3857'
+  nsw_geology_zone56_mip:
+    type: wms
+    req:
+      url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_MIP/MapServer/WMSServer?
+      layers: RockUnits_MIP,RockUnits_MIP_PolygonPatterns,RockUnitBndyFaults_MIP
+      transparent: true
+    coverage:
+      bbox: [16697923.602522,-4348516.197559,16934946.642461,-3507860.866898]
+      srs: 'EPSG:3857'
+  nsw_geology_zone56_neo:
+    type: wms
+    req:
+      url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_NEO/MapServer/WMSServer?
+      layers: 1,2,3,4,5,6
+      transparent: true
+    coverage:
+      bbox: [16698325.223591,-3937827.187341,17102998.731439,-3263149.976856]
+      srs: 'EPSG:3857'
+  nsw_geology_zone56_ptb:
+    type: wms
+    req:
+      url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_PTB/MapServer/WMSServer?
+      layers: 1,2,3,4,5,6
+      transparent: true
+    coverage:
+      bbox: [16688242.496705,-4257532.095755,17015132.143503,-3311200.850643]
+      srs: 'EPSG:3857'
+  # QLD
   qld_topo:
     type: wms
     req:
