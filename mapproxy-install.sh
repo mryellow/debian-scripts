@@ -26,4 +26,6 @@ then
   echo -e "${YEL}Configuring MapProxy.${NC}"
   mapproxy-util create -t base-config $INSTALL_DIR
   cp -u $CURRENT_DIR/assets/mapproxy/* $INSTALL_DIR/
+else
+  echo -e "${RED}Already installed.${NC}"
 fi
