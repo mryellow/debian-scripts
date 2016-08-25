@@ -69,7 +69,7 @@ sudo apt-get install -y redshift-plasmoid
 echo -e "${YEL}Installing utils.${NC}"
 sudo apt-get install -y apg xclip
 sudo apt-get install -y python-virtualenv python-imaging python-yaml libproj0
-sudo apt-get install -y python-yaml libgeos-dev python-lxml libgdal-dev python-shapely
+sudo apt-get install -y python-yaml libgeos-dev python-lxml libgdal-dev python-shapely #python-fiona
 
 echo -e "${YEL}Installing common software.${NC}"
 sudo apt-get install -y plasma-widget-ktorrent rawtherapee qgis python-qgis
@@ -128,4 +128,14 @@ then
   echo "GIT_PROMPT_ONLY_IN_REPO=1" >> ~/.bashrc
   echo "source ~/scripts/git-prompt.sh" >> ~/.bashrc
   echo "PS1='\[\e]0;\u@\h: \w\a\]\${debian_chroot:+(\$debian_chroot)}\u@\h:\w\$(__git_ps1 \" (%s)\")$ '" >> ~/.bashrc
+fi
+
+#GIMP_PLUGINS=`dpkg -L gimp | grep plug-ins | sed -n '1p'`
+GIMP_SCRIPTS=~/.gimp-2.8/scripts
+if [ ! -f $GIMP_SCRIPTS/sg-luminosity-masks.scm ];
+then
+  echo -e "${YEL}Installing GIMP script-fu.${NC}"
+  # Luminosity Masks: http://registry.gimp.org/node/28644
+  cp -u $CURRENT_DIR/assets/gimp/sg-luminosity-masks.scm $GIMP_SCRIPTS/sg-luminosity-masks.scm
+  chmod 0755 $GIMP_SCRIPTS/sg-luminosity-masks.scm
 fi
