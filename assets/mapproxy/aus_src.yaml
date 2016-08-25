@@ -103,6 +103,13 @@ layers:
   - name: qld_topo
     title: "[MP] QLD Topo"
     sources: [qld_topo_cache]
+  # OSM
+  - name: osm
+    title: '[MP] OSM'
+    sources: [osm_tiles_cache]
+  - name: osm_topo
+    title: '[MP] OSM - Topo'
+    sources: [osm_topo_cache]
 
 caches:
   dem_lidar_5m_cache:
@@ -180,6 +187,14 @@ caches:
   qld_topo_cache:
     grids: [webmercator]
     sources: [qld_topo]
+  osm_tiles_cache:
+    grids: [osm_grid]
+    sources: [osm_tiles]
+    format: image/png
+  osm_topo_cache:
+    grids: [osm_grid]
+    sources: [osm_topo]
+    format: image/png
 
 sources:
   # DEM
@@ -454,6 +469,16 @@ sources:
 #      url: http://127.0.0.1:8080/?
 #      transparent: true
 #      layers: qld_topo
+  osm_tiles:
+    type: tile
+    url: http://c.tile.openstreetmap.org/%(tms_path)s.%(format)s
+    transparent: true
+    grid: osm_grid
+  osm_topo:
+    type: tile
+    url: https://c.tile.opentopomap.org/%(z)s/%(x)s/%(y)s.%(format)s
+    transparent: true
+    grid: osm_grid
 
 grids:
   geodetic:
@@ -466,6 +491,9 @@ grids:
     bbox: [108.0000,-45.0000,155.0000,-10.0000]
     #bbox_srs: 'EPSG:4326'
     # TODO: Zone 56 'EPSG:28356'
+  osm_grid:
+    srs: 'EPSG:900913' # google mercator
+    origin: nw
 
 globals:
   http:
