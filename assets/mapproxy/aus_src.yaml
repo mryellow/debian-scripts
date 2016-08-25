@@ -498,3 +498,6 @@ grids:
 globals:
   http:
     ssl_no_cert_checks: True
+#  cache:
+#    base_dir: './cache_data'
+#    lock_dir: './cache_data/locks'
