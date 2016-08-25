@@ -22,6 +22,7 @@ then
   virtualenv --system-site-packages mapproxy
   source $INSTALL_DIR/bin/activate
   pip install MapProxy
+  pip install shapely
   mapproxy-util --version
   echo -e "${YEL}Configuring MapProxy.${NC}"
   mapproxy-util create -t base-config $INSTALL_DIR
