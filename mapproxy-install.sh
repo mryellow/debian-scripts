@@ -23,10 +23,14 @@ then
   source $INSTALL_DIR/bin/activate
   pip install MapProxy
   pip install shapely
+  pip install gunicorn
+  pip install eventlet
+  pip install fiona
   mapproxy-util --version
   echo -e "${YEL}Configuring MapProxy.${NC}"
   mapproxy-util create -t base-config $INSTALL_DIR
   cp -u $CURRENT_DIR/assets/mapproxy/* $INSTALL_DIR/
+  #mapproxy-util create -t wsgi-app -f aus_src.yaml $INSTALL_DIR/config.py
 else
   echo -e "${RED}Already installed.${NC}"
 fi

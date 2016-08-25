@@ -1,9 +1,23 @@
 seeds:
+  nsw:
+    caches: [nsw_topo1_cache,nsw_topo3_cache,nsw_imagery_cache]
+    coverages: [nsw_bbox]
+    levels:
+      to: 5
+    refresh_before:
+      time: 2015-01-01T00:00:00
   nsw_northern:
     caches: [nsw_topo1_cache,nsw_topo3_cache,nsw_imagery_cache]
     coverages: [nsw_northern]
     levels:
       to: 14
+    refresh_before:
+      time: 2015-01-01T00:00:00
+  qld:
+    caches: [qld_topo_cache]
+    coverages: [qld_bbox]
+    levels:
+      to: 5
     refresh_before:
       time: 2015-01-01T00:00:00
   qld_25k:
@@ -33,26 +47,26 @@ coverages:
     bbox: [15425000,-4560000,17400000,-3120000]
     srs: 'EPSG:3857'
   nsw_poly:
-    datasource: 'data/nsw/NSW_STATE_POLYGON_shp.shp'
+    datasource: 'data/nsw_mainland.shp'
     srs: 'EPSG:4283'
   nsw_northern:
-    datasource: 'data/nsw/northern_nsw.shp'
-    srs: 'EPSG:4283'
+    datasource: 'data/nsw_northern.shp'
+    srs: 'EPSG:28356'
 
   qld_bbox:
     bbox: [14530000,-3450000,17830000,-1155000]
     srs: 'EPSG:3857'
   qld_poly:
-    datasource: 'data/qld/Mainland.shp'
+    datasource: 'data/qld_mainland.shp'
     srs: 'EPSG:4326'
   # http://apps.dnrm.qld.gov.au/property/topokey/topokey.htm
   qld_25k:
-    datasource: 'data/qld/25k_qldtopo.kml'
+    datasource: 'data/25k_qldtopo.kml'
     srs: 'EPSG:4326'
   qld_50k:
-    datasource: 'data/qld/50k_qldtopo.kml'
+    datasource: 'data/50k_qldtopo.kml'
     srs: 'EPSG:4326'
   qld_100k:
-    datasource: 'data/qld/100k_qldtopo.kml'
+    datasource: 'data/100k_qldtopo.kml'
     srs: 'EPSG:4326'
-  # TODO: SE QLD poly
+  # TODO: Southern QLD

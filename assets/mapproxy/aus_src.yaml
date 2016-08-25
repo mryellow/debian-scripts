@@ -184,6 +184,7 @@ caches:
 sources:
   # DEM
   dem_lidar_5m:
+    #seed_only: true
     type: wms
     req:
       url: http://services.ga.gov.au/site_9/services/DEM_LiDAR_5m/MapServer/WMSServer?
@@ -192,6 +193,7 @@ sources:
       bbox: [113.760233,-45.949852,162.000033,-9.205568]
       srs: 'EPSG:4283' # GDA94
   dem_lidar_25m:
+    #seed_only: true
     type: wms
     req:
       url: http://services.ga.gov.au/site_9/services/DEM_LiDAR_25m/MapServer/WMSServer?
@@ -201,6 +203,7 @@ sources:
       srs: 'EPSG:4283' # GDA94
   # NSW
   nsw_topo1:
+    #seed_only: true
     type: tile
     url: http://maps.six.nsw.gov.au/arcgis/rest/services/sixmaps/LPITopoMap_S1/MapServer/tile/%(z)s/%(y)s/%(x)s
     transparent: true
@@ -209,6 +212,7 @@ sources:
       bbox: [15696187.703100003,-4509781.353999994,17115491.703099996,-3264541.3539999984]
       srs: 'EPSG:3857'
   nsw_topo3:
+    #seed_only: true
     type: wms
     req:
       url: http://maps.six.nsw.gov.au/arcgis/services/public/NSW_Topo_Map/MapServer/WMSServer?
@@ -217,7 +221,17 @@ sources:
     coverage:
       bbox: [15695967.944500,-4510200.751700,17728371.038500,-3264742.590100]
       srs: 'EPSG:3857'
+#  nsw_topo3_crop:
+#    type: wms
+#    coverage:
+#      datasource: 'data/nsw_northern.shp'
+#      srs: 'EPSG:28356'
+#    req:
+#      url: http://127.0.0.1:8080/?
+#      transparent: true
+#      layers: nsw_topo3
   nsw_imagery:
+    #seed_only: true
     type: wms
     req:
       url: http://maps.six.nsw.gov.au/arcgis/services/public/NSW_Imagery/MapServer/WMSServer?
@@ -228,6 +242,7 @@ sources:
       srs: 'EPSG:3857'
   # NSW Cadastre
   nsw_cadastre_lot:
+    #seed_only: true
     type: wms
     req:
       url: http://maps.six.nsw.gov.au/arcgis/services/public/NSW_Cadastre/MapServer/WMSServer?
@@ -237,6 +252,7 @@ sources:
       bbox: [15695971.703500,-4500719.260500,17709213.067500,-3268784.951625]
       srs: 'EPSG:3857'
   nsw_cadastre_lot_labels:
+    #seed_only: true
     type: wms
     req:
       url: http://maps.six.nsw.gov.au/arcgis/services/public/NSW_Cadastre/MapServer/WMSServer?
@@ -246,6 +262,7 @@ sources:
       bbox: [15695971.703500,-4500719.260500,17709213.067500,-3268784.951625]
       srs: 'EPSG:3857'
   nsw_cadastre_planextent:
+    #seed_only: true
     type: wms
     req:
       url: http://maps.six.nsw.gov.au/arcgis/services/public/NSW_Cadastre/MapServer/WMSServer?
@@ -255,6 +272,7 @@ sources:
       bbox: [15695971.703500,-4500719.260500,17709213.067500,-3268784.951625]
       srs: 'EPSG:3857'
   nsw_cadastre_planextent_labels:
+    #seed_only: true
     type: wms
     req:
       url: http://maps.six.nsw.gov.au/arcgis/services/public/NSW_Cadastre/MapServer/WMSServer?
@@ -264,6 +282,7 @@ sources:
       bbox: [15695971.703500,-4500719.260500,17709213.067500,-3268784.951625]
       srs: 'EPSG:3857'
   nsw_cadastre_sectionextent:
+    #seed_only: true
     type: wms
     req:
       url: http://maps.six.nsw.gov.au/arcgis/services/public/NSW_Cadastre/MapServer/WMSServer?
@@ -273,6 +292,7 @@ sources:
       bbox: [15695971.703500,-4500719.260500,17709213.067500,-3268784.951625]
       srs: 'EPSG:3857'
   nsw_cadastre_sectionextent_labels:
+    #seed_only: true
     type: wms
     req:
       url: http://maps.six.nsw.gov.au/arcgis/services/public/NSW_Cadastre/MapServer/WMSServer?
@@ -282,6 +302,7 @@ sources:
       bbox: [15695971.703500,-4500719.260500,17709213.067500,-3268784.951625]
       srs: 'EPSG:3857'
   nsw_cadastre_rural_planextent:
+    #seed_only: true
     type: wms
     req:
       url: http://maps.six.nsw.gov.au/arcgis/services/public/NSW_Cadastre/MapServer/WMSServer?
@@ -291,6 +312,7 @@ sources:
       bbox: [15695971.703500,-4500719.260500,17709213.067500,-3268784.951625]
       srs: 'EPSG:3857'
   nsw_cadastre_large_rural_planextent:
+    #seed_only: true
     type: wms
     req:
       url: http://maps.six.nsw.gov.au/arcgis/services/public/NSW_Cadastre/MapServer/WMSServer?
@@ -300,6 +322,7 @@ sources:
       bbox: [15695971.703500,-4500719.260500,17709213.067500,-3268784.951625]
       srs: 'EPSG:3857'
   nsw_cadastre_cadastre_labels:
+    #seed_only: true
     type: wms
     req:
       url: http://maps.six.nsw.gov.au/arcgis/services/public/NSW_Cadastre/MapServer/WMSServer?
@@ -311,6 +334,7 @@ sources:
   # NSW Minerals
   # https://spatial.industry.nsw.gov.au/arcgis/rest/services/Minerals
   nsw_fossicking:
+    #seed_only: true
     type: wms
     req:
       url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/Fossicking_Districts/MapServer/WMSServer?
@@ -320,6 +344,7 @@ sources:
       bbox: [141.155805,-36.806092,152.451955,-28.633561]
       srs: 'EPSG:4283'
   nsw_mineral_occurances:
+    #seed_only: true
     type: wms
     req:
       url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/NSWMineralOccurrences/MapServer/WMSServer?
@@ -330,6 +355,7 @@ sources:
       srs: 'EPSG:4326'
   #https://spatial.industry.nsw.gov.au/arcgis/rest/services/Minerals/NSW_1500K_Surface_Geology/MapServer/WMTS/1.0.0/WMTSCapabilities.xml
   nsw_surface_geology:
+    #seed_only: true
     type: tile
     #url: https://spatial.industry.nsw.gov.au/arcgis/rest/services/Minerals/NSW_1500K_Surface_Geology/MapServer/tile/%(z)s/%(y)s/%(x)s
     url: http://spatial.industry.nsw.gov.au/arcgis/rest/services/Minerals/NSW_1500K_Surface_Geology/MapServer/WMTS/tile/1.0.0/Minerals_NSW_1500K_Surface_Geology/default/default028mm/0/%(z)s/%(y)s/%(x)s.%(format)s
@@ -339,6 +365,7 @@ sources:
       bbox: [15695970.275909876,-4509714.1303416155,17102950.44711271,-3268829.1664908603]
       srs: 'EPSG:3857'
   nsw_geology_zone56_cip:
+    #seed_only: true
     type: wms
     req:
       url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_CIP/MapServer/WMSServer?
@@ -348,6 +375,7 @@ sources:
       bbox: [16697923.537401,-4305629.585912,17099648.950232,-3265595.497279]
       srs: 'EPSG:3857'
   nsw_geology_zone56_csp:
+    #seed_only: true
     type: wms
     req:
       url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_CSP/MapServer/WMSServer?
@@ -357,6 +385,7 @@ sources:
       bbox: [16683701.483970,-4509739.275797,17102998.731440,-3263146.688834]
       srs: 'EPSG:3857'
   nsw_geology_zone56_gab:
+    #seed_only: true
     type: wms
     req:
       url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_GAB/MapServer/WMSServer?
@@ -366,6 +395,7 @@ sources:
       bbox: [16697871.543751,-4060832.813242,17102998.731439,-3273186.004357]
       srs: 'EPSG:3857'
   nsw_geology_zone56_lao:
+    #seed_only: true
     type: wms
     req:
       url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_LAO/MapServer/WMSServer?
@@ -375,6 +405,7 @@ sources:
       bbox: [16697871.543698,-4475924.064609,16867107.252536,-3312054.966281]
       srs: 'EPSG:3857'
   nsw_geology_zone56_mip:
+    #seed_only: true
     type: wms
     req:
       url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_MIP/MapServer/WMSServer?
@@ -384,6 +415,7 @@ sources:
       bbox: [16697923.602522,-4348516.197559,16934946.642461,-3507860.866898]
       srs: 'EPSG:3857'
   nsw_geology_zone56_neo:
+    #seed_only: true
     type: wms
     req:
       url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_NEO/MapServer/WMSServer?
@@ -393,6 +425,7 @@ sources:
       bbox: [16698325.223591,-3937827.187341,17102998.731439,-3263149.976856]
       srs: 'EPSG:3857'
   nsw_geology_zone56_ptb:
+    #seed_only: true
     type: wms
     req:
       url: https://spatial.industry.nsw.gov.au/arcgis/services/Minerals/SeamlessGeology_Zone56_PTB/MapServer/WMSServer?
@@ -403,6 +436,7 @@ sources:
       srs: 'EPSG:3857'
   # QLD
   qld_topo:
+    #seed_only: true
     type: wms
     req:
       url: https://gisservices.information.qld.gov.au/arcgis/services/Basemaps/QTopoBase_WebM/MapServer/WMSServer?
@@ -411,6 +445,15 @@ sources:
     coverage:
       bbox: [-20037508.342787,-30242453.561785,20038726.558986,30240972.593302]
       srs: 'EPSG:3857'
+#  qld_topo_crop:
+#    type: wms
+#    coverage:
+#      datasource: 'data/qld_southeast.shp'
+#      srs: 'EPSG:28356'
+#    req:
+#      url: http://127.0.0.1:8080/?
+#      transparent: true
+#      layers: qld_topo
 
 grids:
   geodetic:
@@ -422,6 +465,7 @@ grids:
     origin: nw
     bbox: [108.0000,-45.0000,155.0000,-10.0000]
     #bbox_srs: 'EPSG:4326'
+    # TODO: Zone 56 'EPSG:28356'
 
 globals:
   http:

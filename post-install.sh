@@ -72,7 +72,7 @@ sudo apt-get install -y python-virtualenv python-imaging python-yaml libproj0
 sudo apt-get install -y python-yaml libgeos-dev python-lxml libgdal-dev python-shapely
 
 echo -e "${YEL}Installing common software.${NC}"
-sudo apt-get install -y plasma-widget-ktorrent rawtherapee qgis
+sudo apt-get install -y plasma-widget-ktorrent rawtherapee qgis python-qgis
 
 if [ ! -f ~/src/installed ];
 then
