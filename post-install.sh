@@ -101,12 +101,16 @@ then
   fi
 
   echo -e "${YEL}Installing stand-alone packages.${NC}"
+  sudo apt-get install -y gvfs-bin
   sudo dpkg -i ~/src/atom-amd64.deb
+  sudo apt-get install -y libpango1.0-0 libappindicator1 libcurl3
+  sudo apt-get -fy install
   sudo dpkg -i ~/src/google-chrome-stable_current_amd64.deb
+  sudo apt-get install -y curl zenity
+  sudo apt-get -fy install
   sudo dpkg -i ~/src/steam_latest.deb
   sudo dpkg -i ~/src/mendeleydesktop-latest.deb
-  sudo apt-get -fy install
-
+  
   if ! grep "showInvisibles" ~/.atom/config.cson;
   then
     echo -e "${YEL}Configuring Atom.${NC}"
