@@ -23,6 +23,9 @@ layers:
   - name: nsw_topo3
     title: "[MP] NSW Topo (3)"
     sources: [nsw_topo3_cache]
+  - name: nsw_topo3_border
+    title: "[MP] NSW Topo (3) Border"
+    sources: [nsw_topo3_cache]
   - name: nsw_imagery
     title: "[MP] NSW Imagery"
     sources: [nsw_imagery_cache]
@@ -102,6 +105,9 @@ layers:
   # QLD
   - name: qld_topo
     title: "[MP] QLD Topo"
+    sources: [qld_topo_cache]
+  - name: qld_topo_border
+    title: "[MP] QLD Topo Border"
     sources: [qld_topo_cache]
   # OSM
   - name: osm

@@ -69,7 +69,7 @@ sudo apt-get install -y redshift-plasmoid
 echo -e "${YEL}Installing utils.${NC}"
 sudo apt-get install -y apg xclip
 sudo apt-get install -y python-virtualenv python-imaging python-yaml libproj0
-sudo apt-get install -y python-yaml libgeos-dev python-lxml libgdal-dev python-shapely #python-fiona
+sudo apt-get install -y python-yaml libgeos-dev libgdal-dev python-lxml #python-shapely #python-fiona
 
 echo -e "${YEL}Installing common software.${NC}"
 sudo apt-get install -y plasma-widget-ktorrent rawtherapee qgis python-qgis
