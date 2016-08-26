@@ -111,6 +111,11 @@ then
   sudo dpkg -i ~/src/steam_latest.deb
   sudo dpkg -i ~/src/mendeleydesktop-latest.deb
   
+  if [ ! -d ~/.atom ];
+  then
+    atom # Spawn Atom to create directory
+  fi
+  
   if ! grep "showInvisibles" ~/.atom/config.cson;
   then
     echo -e "${YEL}Configuring Atom.${NC}"
