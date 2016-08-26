@@ -41,7 +41,7 @@ then
   echo -e "${YEL}Installing dependencies.${NC}"
   sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
   # FIXME: `python-numpy` not included in OpenCV3 dependencies.
-  sudo apt-get install -y python-catkin-tools python-numpy
+  sudo apt-get install -y python-catkin-tools python-empy python-numpy
   sudo apt-get install -y cmake-qt-gui
 else
   echo -e "${RED}Updating apt - skipped.${NC}"
