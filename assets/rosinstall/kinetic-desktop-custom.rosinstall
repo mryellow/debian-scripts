@@ -1010,7 +1010,7 @@
 - git:
     local-name: yocs_msgs
     uri: https://github.com/yujinrobot/yocs_msgs.git
-    version: kinetic
+    version: release/0.6-kinetic
 - git:
     local-name: linux_peripheral_interfaces
     uri: https://github.com/ros-drivers/linux_peripheral_interfaces.git
