@@ -8,17 +8,14 @@ RED='\033[0;31m'
 YEL='\033[1;33m'
 NC='\033[0m' # No Color
 
-# As root
-# adduser yellow sudo
-
-# As user
-#sudo apt-get install -y git
-#git config --global user.name "Mr-Yellow"
-#git config --global user.email "mr-yellow@mr-yellow.com"
-#git config --global push.default simple
-#ssh-keygen -t rsa -b 4096 -C "mr-yellow@mr-yellow.com"
-#git clone git@github.com:mryellow/debian-scripts.git ~/scripts
-#./scripts/post-install.sh
+if [ ! -f ~/.ssh/id_rsa ]
+then
+  echo -e "${YEL}Creating SSH key.${NC}"
+  # Prompt for email address
+  echo "Email: "
+  read email
+  ssh-keygen -t rsa -b 4096 -C "$email"
+fi
 
 if [ ! -f ~/.gnupg/gpg.conf ]
 then
