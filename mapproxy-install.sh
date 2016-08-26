@@ -25,7 +25,7 @@ then
   pip install shapely
   pip install gunicorn
   pip install eventlet
-  pip install fiona
+  pip install fiona==1.5.1
   mapproxy-util --version
   echo -e "${YEL}Configuring MapProxy.${NC}"
   mapproxy-util create -t base-config $INSTALL_DIR
