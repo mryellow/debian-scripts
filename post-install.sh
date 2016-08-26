@@ -141,6 +141,7 @@ GIMP_SCRIPTS=~/.gimp-2.8/scripts
 if [ ! -f $GIMP_SCRIPTS/sg-luminosity-masks.scm ];
 then
   echo -e "${YEL}Installing GIMP script-fu.${NC}"
+  mkdir -p $GIMP_SCRIPTS
   # Luminosity Masks: http://registry.gimp.org/node/28644
   cp -u $CURRENT_DIR/assets/gimp/sg-luminosity-masks.scm $GIMP_SCRIPTS/sg-luminosity-masks.scm
   chmod 0755 $GIMP_SCRIPTS/sg-luminosity-masks.scm
