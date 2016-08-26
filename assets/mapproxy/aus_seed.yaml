@@ -1,4 +1,11 @@
 seeds:
+  border_region:
+    caches: [nsw_topo1_cache,nsw_topo3_cache,nsw_imagery_cache,qld_topo_cache]
+    coverages: [border_region]
+    levels:
+      to: 16
+    refresh_before:
+      time: 2015-01-01T00:00:00
   nsw:
     caches: [nsw_topo1_cache,nsw_topo3_cache,nsw_imagery_cache]
     coverages: [nsw_bbox]
@@ -43,6 +50,9 @@ seeds:
       time: 2015-01-01T00:00:00
 
 coverages:
+  border_region:
+    datasource: 'data/border_region.shp'
+    srs: 'EPSG:28356'
   nsw_bbox:
     bbox: [15425000,-4560000,17400000,-3120000]
     srs: 'EPSG:3857'
