@@ -14,7 +14,7 @@ echo -e "${YEL}INSTALL_DIR: $INSTALL_DIR${NC}"
 #echo -e "${YEL}SOURCES_DIR: $SOURCES_DIR${NC}"
 
 echo -e "${YEL}Installing dependencies.${NC}"
-sudo apt-get install -y python-virtualenv
+sudo apt-get install -y python-dev python-virtualenv
 
 if [ ! -d $INSTALL_DIR ];
 then
