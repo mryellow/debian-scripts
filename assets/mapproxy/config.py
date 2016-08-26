@@ -37,7 +37,7 @@ def auth(service, layers=[], environ=None, **kw):
         }
 
 from mapproxy.wsgiapp import make_wsgi_app
-_application = make_wsgi_app(r'/home/yellow/mapproxy/aus_src.yaml')
+_application = make_wsgi_app(r'aus_src.yaml')
 
 def application(environ, start_response):
     environ['mapproxy.authorize'] = auth
