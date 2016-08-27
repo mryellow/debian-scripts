@@ -63,13 +63,12 @@ sudo adduser $USER bumblebee
 echo -e "${YEL}Installing RedShift blue-light management.${NC}"
 sudo apt-get install -y redshift-plasmoid
 
-echo -e "${YEL}Installing utils.${NC}"
+echo -e "${YEL}Installing software.${NC}"
 sudo apt-get install -y apg xclip
 sudo apt-get install -y python-virtualenv python-imaging python-yaml libproj0
 sudo apt-get install -y python-yaml libgeos-dev libgdal-dev python-lxml #python-shapely #python-fiona
-
-echo -e "${YEL}Installing common software.${NC}"
 sudo apt-get install -y plasma-widget-ktorrent rawtherapee qgis python-qgis
+sudo apt-get install -y gparted
 
 if [ ! -f ~/src/installed ];
 then
@@ -110,12 +109,12 @@ then
   sudo apt-get -fy install
   sudo dpkg -i ~/src/steam_latest.deb
   sudo dpkg -i ~/src/mendeleydesktop-latest.deb
-  
+
   if [ ! -d ~/.atom ];
   then
     atom # Spawn Atom to create directory
   fi
-  
+
   if ! grep "showInvisibles" ~/.atom/config.cson;
   then
     echo -e "${YEL}Configuring Atom.${NC}"

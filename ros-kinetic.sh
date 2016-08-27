@@ -20,10 +20,10 @@ echo -e "${YEL}PROC_CNT: $PROC_CNT${NC}"
 
 # Ask for SSH passphrase
 # FIXME: Already set after reboot, although passphrase not saved.
-if [ -z "$SSH_AUTH_SOCK" ];
-then
-  ssh-add
-fi
+#if [ -z "$SSH_AUTH_SOCK" ];
+#then
+ssh-add
+#fi
 
 if [ ! -f /etc/apt/sources.list.d/ros-latest.list ];
 then
