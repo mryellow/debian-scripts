@@ -69,6 +69,7 @@ sudo apt-get install -y python-virtualenv python-imaging python-yaml libproj0
 sudo apt-get install -y python-yaml libgeos-dev libgdal-dev python-lxml #python-shapely #python-fiona
 sudo apt-get install -y plasma-widget-ktorrent rawtherapee qgis python-qgis
 sudo apt-get install -y gparted
+sudo apt-get install -y nodejs npm
 
 if [ ! -f ~/src/installed ];
 then
