@@ -43,6 +43,7 @@ then
   # FIXME: `python-numpy` not included in OpenCV3 dependencies.
   sudo apt-get install -y python-catkin-tools python-empy python-numpy
   sudo apt-get install -y cmake-qt-gui
+  sudo apt-get install -y gdb
 else
   echo -e "${RED}Updating apt - skipped.${NC}"
 fi
