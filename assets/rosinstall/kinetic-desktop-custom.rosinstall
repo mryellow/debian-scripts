@@ -180,6 +180,10 @@
     uri: https://github.com/ros-gbp/gazebo_ros_pkgs-release.git
     version: release/kinetic/gazebo_ros_pkgs/2.5.7-0
 - git:
+    local-name: gazebo_ros_pkgs/gazebo_ros_control
+    uri: https://github.com/ros-gbp/gazebo_ros_pkgs-release.git
+    version: release/kinetic/gazebo_ros_control
+- git:
     local-name: gencpp
     uri: https://github.com/ros-gbp/gencpp-release.git
     version: release/kinetic/gencpp/0.5.4-0
