@@ -105,8 +105,11 @@ function workspace {
     if [ $NO_GPU -eq 1 ];
     then
       echo -e "${YEL}Disabling CUDA support.${NC}"
-      catkin config -w$DIR --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF #> /dev/null
+      catkin config -w$DIR --append-args --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF #> /dev/null
     fi
+
+    echo -e "${YEL}Specifying QT5.${NC}"
+    catkin config -w$DIR --append-args --cmake-args -DWITH_QT=5 -DUseQt5=ON #> /dev/null
 
     if [ ! -z $EXT ];
     then
