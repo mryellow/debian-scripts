@@ -108,8 +108,8 @@ function workspace {
       catkin config -w$DIR --append-args --cmake-args -DWITH_CUDA=OFF -DBUILD_opencv_gpu=OFF #> /dev/null
     fi
 
-    echo -e "${YEL}Specifying QT5.${NC}"
-    catkin config -w$DIR --append-args --cmake-args -DWITH_QT=5 -DUseQt5=ON #> /dev/null
+    echo -e "${YEL}Specifying QT4.${NC}"
+    catkin config -w$DIR --append-args --cmake-args -DWITH_QT=4 -DUseQt5=OFF #> /dev/null
 
     if [ ! -z $EXT ];
     then
