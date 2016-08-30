@@ -103,6 +103,10 @@ then
   echo -e "${YEL}Installing stand-alone packages.${NC}"
   sudo apt-get install -y gvfs-bin
   sudo dpkg -i ~/src/atom-amd64.deb
+  apm install editorconfig
+  apm install language-lua linter
+  apm install linter-luacheck linter-jscs linter-scss-lint linter-csslint linter-tidy
+
   sudo apt-get install -y libpango1.0-0 libappindicator1 libcurl3
   sudo apt-get -fy install
   sudo dpkg -i ~/src/google-chrome-stable_current_amd64.deb
