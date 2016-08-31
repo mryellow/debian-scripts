@@ -101,11 +101,14 @@ then
   fi
 
   echo -e "${YEL}Installing stand-alone packages.${NC}"
-  sudo apt-get install -y gvfs-bin
+  sudo apt-get install -y gvfs-bin tidy
   sudo dpkg -i ~/src/atom-amd64.deb
+  sudo apt-get install -y tidy
   apm install editorconfig
   apm install language-lua linter
-  apm install linter-luacheck linter-jscs linter-scss-lint linter-csslint linter-tidy
+  apm install linter-lua linter-jscs linter-scss-lint linter-csslint linter-tidy
+  echo -e "${RED}Torch install required for linter-lua.${NC}"
+  echo -e "${RED}Set linter-lua path to /home/$USER/torch/install/bin/luajit.${NC}"
 
   sudo apt-get install -y libpango1.0-0 libappindicator1 libcurl3
   sudo apt-get -fy install
