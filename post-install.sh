@@ -150,3 +150,7 @@ then
   cp -u $CURRENT_DIR/assets/gimp/sg-luminosity-masks.scm $GIMP_SCRIPTS/sg-luminosity-masks.scm
   chmod 0755 $GIMP_SCRIPTS/sg-luminosity-masks.scm
 fi
+
+echo -e "${RED}TODO:${NC}"
+echo -e "${RED}Disable hardware rendering in Chrome.${NC}"
+echo -e "${RED}Manual installation of Torch.${NC}"
