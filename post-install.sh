@@ -70,6 +70,17 @@ sudo apt-get install -y python-yaml libgeos-dev libgdal-dev python-lxml #python-
 sudo apt-get install -y plasma-widget-ktorrent rawtherapee qgis python-qgis
 sudo apt-get install -y gparted
 sudo apt-get install -y nodejs npm nodejs-legacy
+sudo apt-get install -y php5-cli
+
+# TODO: Check if already installed
+# TODO: Use absolute paths `--install-dir`
+# curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+#echo -e "${YEL}Installing composer.${NC}"
+#php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+#php -r "if (hash_file('SHA384', 'composer-setup.php') === 'e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+#php composer-setup.php
+#php -r "unlink('composer-setup.php');"
 
 if [ ! -f ~/src/installed ];
 then
@@ -104,6 +115,7 @@ then
   sudo apt-get install -y gvfs-bin tidy
   sudo dpkg -i ~/src/atom-amd64.deb
   sudo apt-get install -y tidy
+  sudo gem install scss_lint
   apm install editorconfig
   apm install language-lua linter
   apm install linter-lua linter-jscs linter-scss-lint linter-csslint linter-tidy
