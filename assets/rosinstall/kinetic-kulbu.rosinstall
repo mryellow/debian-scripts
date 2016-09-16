@@ -21,6 +21,10 @@
 #    local-name: kulbu_hardware
 #    uri: git@github.com:kulbu/kulbu_hardware.git
 #    version: kinetic-devel
+#- git:
+#    local-name: kulbabu_hardware
+#    uri: git@github.com:kulbu/kulbabu_hardware.git
+#    version: kinetic-devel
 - git:
     local-name: hector_gazebo
     uri: https://github.com/tu-darmstadt-ros-pkg/hector_gazebo.git

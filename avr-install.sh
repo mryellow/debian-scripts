@@ -11,6 +11,7 @@ NC='\033[0m' # No Color
 echo -e "${YEL}Installing dependencies.${NC}"
 sudo apt-get install -y gcc-avr binutils-avr gdb-avr avr-libc avrdude simulavr srecord
 sudo apt-get install -y usbutils # lsusb
+sudo apt-get install -y minicom # UART
 
 echo -e "${YEL}Updating UDEV rules.${NC}"
 sudo cp -u $CURRENT_DIR/assets/avr/*.rules /etc/udev/rules.d/
