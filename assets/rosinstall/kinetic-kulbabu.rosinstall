@@ -6,6 +6,10 @@
     local-name: kulbabu_hardware
     uri: git@github.com:kulbu/kulbabu_hardware.git
     version: kinetic-devel
+- git:
+    local-name: xacro_common
+    uri: git@github.com:kulbu/xacro_common.git
+    version: kinetic-devel
 #- git:
 #    local-name: kulbabu_gazebo
 #    uri: git@github.com:kulbu/kulbabu_gazebo.git
