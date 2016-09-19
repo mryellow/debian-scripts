@@ -164,5 +164,7 @@ function workspace {
   #fi
 }
 
+# Extending package install.
+source /opt/ros/kinetic/setup.bash
 workspace root_ws kinetic-hardware-custom.rosinstall
 workspace kulbabu_ws kinetic-kulbabu.rosinstall root_ws
