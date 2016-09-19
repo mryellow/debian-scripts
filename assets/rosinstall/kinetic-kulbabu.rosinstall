@@ -1,9 +1,12 @@
 - git:
-    local-name: kulbu
-    uri: git@github.com:kulbu/kulbu.git
+    local-name: kulbabu
+    uri: git@github.com:kulbu/kulbabu.git
     version: kinetic-devel
 - git:
     local-name: kulbabu_hardware
     uri: git@github.com:kulbu/kulbabu_hardware.git
     version: kinetic-devel
-
+#- git:
+#    local-name: kulbabu_gazebo
+#    uri: git@github.com:kulbu/kulbabu_gazebo.git
+#    version: kinetic-devel

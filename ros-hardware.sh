@@ -3,7 +3,7 @@ set -o errexit
 set -o pipefail
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-KINETIC_DIR="/media/odroid/ros/ros-kinetic"
+KINETIC_DIR="/media/$USER/ros/ros-kinetic"
 
 RED='\033[0;31m'
 YEL='\033[1;33m'
