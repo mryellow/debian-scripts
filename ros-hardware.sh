@@ -153,6 +153,13 @@ function workspace {
   echo -e "${YEL}Installing dependency packages.${NC}"
   (source $DIR/devel/setup.bash && rosdep install --from-paths $DIR/src --ignore-src --rosdistro kinetic --os $(lsb_release -si | awk '{print tolower($0)}'):$(lsb_release -sc))
 
+  # Note: Package not source install.
+  if [[ $EXT == "$KINETIC_DIR/root_ws/devel" ]];
+  then
+    echo -e "${YEL}Extending ROS install.${NC}"
+    catkin config -w"$KINETIC_DIR/root_ws" --extend /opt/ros/kinetic/devel
+  fi
+
   #echo -e "${YEL}Build workspace $DIR? [Y/n]${NC}"
   #read input_variable
   #if echo "$input_variable" | grep -iq "^n";
@@ -167,7 +174,4 @@ function workspace {
 # Extending package install.
 workspace root_ws kinetic-hardware-custom.rosinstall
 workspace kulbabu_ws kinetic-kulbabu.rosinstall root_ws
-
-echo -e "${YEL}Extending ROS install.${NC}"
-catkin config -w"$KINETIC_DIR/root_ws" --extend /opt/ros/kinetic/setup.bash
 
