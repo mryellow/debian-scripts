@@ -165,6 +165,9 @@ function workspace {
 }
 
 # Extending package install.
-source /opt/ros/kinetic/setup.bash
 workspace root_ws kinetic-hardware-custom.rosinstall
 workspace kulbabu_ws kinetic-kulbabu.rosinstall root_ws
+
+echo -e "${YEL}Extending ROS install.${NC}"
+catkin config -w"$KINETIC_DIR/root_ws" --extend /opt/ros/kinetic/setup.bash
+
