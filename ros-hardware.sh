@@ -157,7 +157,7 @@ function workspace {
   if [[ $EXT == "$KINETIC_DIR/root_ws/devel" ]];
   then
     echo -e "${YEL}Extending ROS install.${NC}"
-    catkin config -w"$KINETIC_DIR/root_ws" --extend /opt/ros/kinetic/devel
+    catkin config -w"$KINETIC_DIR/root_ws" --extend /opt/ros/kinetic
   fi
 
   #echo -e "${YEL}Build workspace $DIR? [Y/n]${NC}"
