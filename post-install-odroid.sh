@@ -13,3 +13,5 @@ then
   sudo swapon -a
 fi
 
+sudo chown -R $USER:$USER /media/$USER/ros
+
