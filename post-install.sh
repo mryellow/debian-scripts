@@ -167,6 +167,16 @@ then
   chmod 0755 $GIMP_SCRIPTS/sg-luminosity-masks.scm
 fi
 
+#if [ ! -f /etc/init.d/icc-profile.sh ];
+#then
+#  echo -e "${YEL}Installing ICC profile.${NC}"
+#  sudo cp -u "${CURRENT_DIR}/assets/icc/N156BGE-L41 #1 2016-11-24 04-15 2.2 M-S XYZLUT+MTX.icc" "/usr/share/color/icc/N156BGE-L41 #1 2016-11-24 04-15 2.2 M-S XYZLUT+MTX.icc"
+#  sudo cp -u $CURRENT_DIR/assets/icc/icc-profile.sh /etc/init.d/icc-profile.sh
+#  sudo chmod 0755 /etc/init.d/icc-profile.sh
+#  sudo systemctl enable icc-profile.sh
+#  sudo systemctl start icc-profile.service
+#fi
+
 echo -e "${RED}TODO:${NC}"
 echo -e "${RED}Disable hardware rendering in Chrome.${NC}"
 echo -e "${RED}Manual installation of Torch.${NC}"
