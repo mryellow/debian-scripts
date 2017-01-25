@@ -71,6 +71,7 @@ sudo apt-get install -y plasma-widget-ktorrent rawtherapee qgis python-qgis
 sudo apt-get install -y gparted
 sudo apt-get install -y nodejs npm nodejs-legacy
 sudo apt-get install -y php5-cli
+sudo apt-get install -y ntp
 
 # TODO: Check if already installed
 # TODO: Use absolute paths `--install-dir`
