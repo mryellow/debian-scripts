@@ -121,6 +121,7 @@ then
   apm install language-lua linter
   apm install linter-lua linter-jscs linter-scss-lint linter-csslint
   apm install linter-cppcheck linter-tidy
+  apm install pigments
   echo -e "${RED}Torch install required for linter-lua.${NC}"
   echo -e "${RED}Set linter-lua path to /home/$USER/torch/install/bin/luajit.${NC}"
 
