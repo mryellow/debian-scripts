@@ -30,8 +30,20 @@ then
   echo -e "${YEL}Adding contrib and non-free sources for nvidia drivers.${NC}"
   sudo sed --in-place=.old -e 's/main$/main contrib non-free/g' /etc/apt/sources.list
 fi
+
+if [ ! -f /etc/apt/sources.list.d/ros-latest.list ];
+then
+  echo -e "${YEL}Add sources for lynis.${NC}"
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C80E383C3DE9F082E01391A0366C67DE91CA5D5F
+  sudo apt install apt-transport-https
+  sudo sh -c 'echo "deb https://packages.cisofy.com/community/lynis/deb/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/cisofy-lynis.list'
+fi
+
 sudo apt-get update
 sudo apt-get upgrade -y
+
+echo -e "${YEL}Installing lynis.${NC}"
+sudo apt-get install lynis
 
 echo -e "${YEL}Reconfigure fonts.${NC}"
 sudo apt-get install -y ttf-dejavu ttf-liberation ttf-mscorefonts-installer xfonts-terminus
