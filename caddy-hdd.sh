@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ! grep "e3b67f0e-608b-4c8e-8cd7-f962e64cd6bf" /etc/apt/sources.list;
+if ! grep "e3b67f0e-608b-4c8e-8cd7-f962e64cd6bf" /etc/fstab;
 then
   DIR="/home/$USER/caddy"
   mkdir -p $DIR
