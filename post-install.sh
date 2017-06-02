@@ -101,7 +101,7 @@ then
   if [ ! -f ~/src/atom-amd64.deb ];
   then
     echo -e "${YEL}Downloading Atom.${NC}"
-    wget -O ~/src/atom-amd64.deb https://github.com/atom/atom/releases/download/v1.9.9/atom-amd64.deb
+    wget -O ~/src/atom-amd64.deb https://github.com/atom/atom/releases/download/v1.17.2/atom-amd64.deb
   fi
   if [ ! -f ~/src/google-chrome-stable_current_amd64.deb ];
   then
@@ -132,7 +132,8 @@ then
   apm install editorconfig
   apm install language-lua linter
   apm install linter-lua linter-jscs linter-scss-lint linter-csslint
-  apm install linter-cppcheck linter-tidy
+  apm install linter-cppcheck
+  #linter-tidy
   apm install pigments
   echo -e "${RED}Torch install required for linter-lua.${NC}"
   echo -e "${RED}Set linter-lua path to /home/$USER/torch/install/bin/luajit.${NC}"
