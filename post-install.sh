@@ -55,6 +55,9 @@ sudo apt-get upgrade -y
 echo -e "${YEL}Installing lynis.${NC}"
 sudo apt-get install lynis
 
+echo -e "${YEL}Installing InfluxDB.${NC}"
+sudo apt-get install influxdb
+
 echo -e "${YEL}Reconfigure fonts.${NC}"
 sudo apt-get install -y ttf-dejavu ttf-liberation ttf-mscorefonts-installer xfonts-terminus
 sudo dpkg-reconfigure fontconfig-config
