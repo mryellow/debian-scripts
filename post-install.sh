@@ -2,6 +2,8 @@
 set -o errexit
 set -o pipefail
 
+# TODO: Update to stretch.
+
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 RED='\033[0;31m'
@@ -31,12 +33,20 @@ then
   sudo sed --in-place=.old -e 's/main$/main contrib non-free/g' /etc/apt/sources.list
 fi
 
-if [ ! -f /etc/apt/sources.list.d/ros-latest.list ];
+if [ ! -f /etc/apt/sources.list.d/cisofy-lynis.list ];
 then
   echo -e "${YEL}Add sources for lynis.${NC}"
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C80E383C3DE9F082E01391A0366C67DE91CA5D5F
   sudo apt install apt-transport-https
   sudo sh -c 'echo "deb https://packages.cisofy.com/community/lynis/deb/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/cisofy-lynis.list'
+fi
+
+if [ ! -f /etc/apt/sources.list.d/influxdb.list ];
+then
+  echo -e "${YEL}Add sources for InfluxDB.${NC}"
+
+  curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+  sudo sh -c 'echo "deb https://repos.influxdata.com/debian $(lsb_release -sc) stable" > /etc/apt/sources.list.d/influxdb.list'
 fi
 
 sudo apt-get update
