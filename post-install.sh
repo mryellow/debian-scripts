@@ -114,7 +114,7 @@ then
   if [ ! -f ~/src/atom-amd64.deb ];
   then
     echo -e "${YEL}Downloading Atom.${NC}"
-    wget -O ~/src/atom-amd64.deb https://github.com/atom/atom/releases/download/v1.19.0/atom-amd64.deb
+    wget -O ~/src/atom-amd64.deb https://github.com/atom/atom/releases/download/v1.24.1/atom-amd64.deb
   fi
   if [ ! -f ~/src/google-chrome-stable_current_amd64.deb ];
   then
