@@ -113,6 +113,7 @@ then
   mkdir -p ~/src/
   if [ ! -f ~/src/atom-amd64.deb ];
   then
+    echo -e "TODO: Could use APT for Atom"
     echo -e "${YEL}Downloading Atom.${NC}"
     wget -O ~/src/atom-amd64.deb https://github.com/atom/atom/releases/download/v1.24.1/atom-amd64.deb
   fi
