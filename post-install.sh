@@ -146,7 +146,7 @@ then
   apm install editorconfig
   apm install language-lua linter
   apm install linter-lua linter-jscs linter-scss-lint linter-csslint
-  apm install linter-cppcheck
+  apm install linter-cppcheck linter-solidity
   #linter-tidy
   apm install pigments
   apm upgrade --confirm false
