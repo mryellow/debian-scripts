@@ -19,14 +19,14 @@ sudo cp -u $CURRENT_DIR/assets/avr/*.rules /etc/udev/rules.d/
 if [ ! -f ~/src/saleae_logic.zip ];
 then
   echo -e "${YEL}Downloading Saleae Logic.${NC}"
-  wget -O ~/src/saleae_logic.zip "http://downloads.saleae.com/logic/1.2.10/Logic%201.2.10%20(64-bit).zip"
+  wget -O ~/src/saleae_logic.zip "https://downloads.saleae.com/logic/1.2.18/Logic%201.2.18%20(64-bit).zip"
 fi
 
 if [ ! -d /home/$USER/saleae ];
 then
   echo -e "${YEL}Installing Saleae Logic.${NC}"
   unzip -o ~/src/saleae_logic.zip -d ~/src/saleae_logic
-  cp -ru "/home/$USER/src/saleae_logic/Logic 1.2.10 (64-bit)/" /home/$USER/saleae/
+  cp -ru "/home/$USER/src/saleae_logic/Logic 1.2.18 (64-bit)/" /home/$USER/saleae/
   cd /home/$USER/saleae/Drivers/ && ./install_driver.sh
 fi
 
